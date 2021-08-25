@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+<header>
+</header>	
+
+<h:body>
+	<h1>Cadastro de Usuario</h1>
+	<h:outputLabel value="Nome:" styleClass="label" />
+			<h:inputText value="#{ususuarioController.usuario.nome}"
+				styleClass="input">
+
+	</h:inputText>
+	<h:outputLabel value="Descricao:" styleClass="label" />
+			<h:inputText value="#{ususuarioController.usuario.descricao}"
+				styleClass="input">
+
+	</h:inputText>
+	<h:outputLabel value="Senha:" styleClass="label" />
+			<h:inputText value="#{ususuarioController.usuario.senha}"
+				styleClass="input">
+
+	</h:inputText>
+</h:body>
+
+</html>
