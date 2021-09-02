@@ -6,6 +6,14 @@
   <packaging>war</packaging>
   
   <dependencies>
+     <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+    <dependency>
+       <groupId>org.primefaces</groupId>
+       <artifactId>primefaces</artifactId>
+       <version>10.0.0</version>
+    </dependency>
+   
+        
   <!-- https://mvnrepository.com/artifact/org.glassfish/javax.faces -->
 		<dependency>
 			<groupId>org.glassfish</groupId>

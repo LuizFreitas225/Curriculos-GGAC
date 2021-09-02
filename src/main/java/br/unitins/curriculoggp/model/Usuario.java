@@ -1,5 +1,6 @@
 package br.unitins.curriculoggp.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +11,11 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+	@Column(nullable= false, length = 70)
 	private String nome;
+	@Column(nullable= false, length = 150)
 	private  String descricao;
+	@Column(nullable= false, length = 10)
 	private  String senha;
 	
 	public Usuario() {
@@ -41,6 +45,14 @@ public class Usuario {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	

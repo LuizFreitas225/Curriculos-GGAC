@@ -1,27 +1,89 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
-<header>
-</header>	
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>	
 
 <h:body>
-	<h1>Cadastro de Usuario</h1>
-	<h:outputLabel value="Nome:" styleClass="label" />
-			<h:inputText value="#{ususuarioController.usuario.nome}"
-				styleClass="input">
 
-	</h:inputText>
-	<h:outputLabel value="Descricao:" styleClass="label" />
-			<h:inputText value="#{ususuarioController.usuario.descricao}"
-				styleClass="input">
+<h:messages  id="mensagemValidacao" style="color:#555F5E;margin:8px;" />
+<h:form id="inputForm">
+	<h1>Cadastro de Usuário</h1>
+	
+	 
+        <p:panel   header="Prencha o Formulário" footer="......">
+        <h:panelGrid  columns="2" cellpadding="7" id="inputGrid">
+        
+            
+            <p:outputLabel  value="Nome:"/>
+            <p:inputText value="#{usuarioController.usuario.nome}" />
 
-	</h:inputText>
-	<h:outputLabel value="Senha:" styleClass="label" />
-			<h:inputText value="#{ususuarioController.usuario.senha}"
-				styleClass="input">
+            <p:outputLabel  value="Descricao:"/>
+            <p:inputText value="#{usuarioController.usuario.descricao}"/>
 
-	</h:inputText>
+            <p:outputLabel value="Senha:"/>
+          <p:inputText value="#{usuarioController.usuario.senha}"/>
+
+            
+
+        
+        </h:panelGrid>
+           <h:panelGrid id="inputButtons" columns="3" cellpadding="7">
+        <p:commandButton update="inputGrid mensagemValidacao formData" value="Salvar" action="#{usuarioController.salvar}"
+            disabled="#{usuarioController.usuario.id != null}">
+        
+        </p:commandButton>
+        <p:commandButton update="inputForm mensagemValidacao" value="Limpar" action="#{usuarioController.limpar}" />
+        
+        <p:commandButton update="inputGrid mensagemValidacao formData" value="Alterar" action="#{usuarioController.atualizar}">
+        
+        </p:commandButton>    
+        
+        </h:panelGrid>
+           
+         </p:panel>
+         
+    </h:form>
+    
+    
+    <h:form id="formData">
+        
+        <p:dataTable id="usuarios" var="usuario" value="#{usuarioController.todos}" rowKey="#{usuario.id}">
+            <f:facet name="header">
+                Lista de Usuários
+            </f:facet>
+              
+            <p:column headerText="Id">
+                <h:outputText value="#{usuario.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{usuario.nome}" />
+            </p:column>
+            <p:column headerText="Descrição">
+                <h:outputText value="#{usuario.descricao}" />
+            </p:column>
+            <p:column headerText="Senha">
+                <h:outputText value="#{usuario.senha}" />
+            </p:column>
+            
+            <p:column style="width:3rem;text-align: center">
+                <p:commandButton update="inputForm:inputGrid inputForm:inputButtons mensagemValidacao"  value="Editar" title="Editar"
+                   action="#{usuarioController.editar(usuario)}"/>
+             </p:column>  
+             
+             <p:column style="width:3rem;text-align: center">
+                
+                   
+                   <p:commandButton update="inputForm:inputGrid formData mensagemValidacao " icon="pi pi-times" title="Excluir"
+                   action="#{usuarioController.excluir(usuario)}" styleClass="rounded-button ui-button-danger ui-button-outlined" />
+             </p:column> 
+               
+        </p:dataTable>
+          </h:form>
+
 </h:body>
 
 </html>
