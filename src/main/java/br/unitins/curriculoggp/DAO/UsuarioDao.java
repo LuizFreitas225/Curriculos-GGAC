@@ -1,4 +1,4 @@
-package br.unitins.DAO;
+package br.unitins.curriculoggp.DAO;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import br.unitins.curriculoggp.application.JPAUtil;
 import br.unitins.curriculoggp.model.Usuario;
 
 public class UsuarioDao implements DAO<Usuario> {
@@ -17,8 +18,8 @@ public class UsuarioDao implements DAO<Usuario> {
 		// TODO Auto-generated constructor stub
 	}
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("CurriculoGGP");
-	EntityManager em  = emf.createEntityManager();
+	
+	EntityManager em  = JPAUtil.getEntityManager();
 	
 	@Override
 	public Usuario inserir (Usuario obj) {

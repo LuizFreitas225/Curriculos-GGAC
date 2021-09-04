@@ -1,4 +1,4 @@
-package br.unitins.DAO;
+package br.unitins.curriculoggp.DAO;
 
 import java.util.List;
 

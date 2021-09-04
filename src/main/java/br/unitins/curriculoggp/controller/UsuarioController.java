@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import br.unitins.DAO.UsuarioDao;
+import br.unitins.curriculoggp.DAO.UsuarioDao;
 import br.unitins.curriculoggp.model.Usuario;
 
 @Named

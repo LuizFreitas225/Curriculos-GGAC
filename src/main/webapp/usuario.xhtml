@@ -32,13 +32,14 @@
         
         </h:panelGrid>
            <h:panelGrid id="inputButtons" columns="3" cellpadding="7">
-        <p:commandButton update="inputGrid mensagemValidacao formData" value="Salvar" action="#{usuarioController.salvar}"
+        <p:commandButton update="inputButtons inputGrid mensagemValidacao formData" value="Salvar" action="#{usuarioController.salvar}"
             disabled="#{usuarioController.usuario.id != null}">
         
         </p:commandButton>
-        <p:commandButton update="inputForm mensagemValidacao" value="Limpar" action="#{usuarioController.limpar}" />
+        <p:commandButton update=" inputForm mensagemValidacao" value="Limpar" action="#{usuarioController.limpar}" />
         
-        <p:commandButton update="inputGrid mensagemValidacao formData" value="Alterar" action="#{usuarioController.atualizar}">
+        <p:commandButton update="inputButtons inputGrid mensagemValidacao formData" value="Alterar" action="#{usuarioController.atualizar}"
+        disabled="#{usuarioController.usuario.id == null}">
         
         </p:commandButton>    
         
@@ -50,7 +51,9 @@
     
     
     <h:form id="formData">
-        
+        <p:commandButton id="movieBtn" value="Listar Usuários" type="button" icon="pi pi-search" />
+         <p:overlayPanel for="movieBtn" dynamic="true" style="width:600px" widgetVar="moviePicker">
+         
         <p:dataTable id="usuarios" var="usuario" value="#{usuarioController.todos}" rowKey="#{usuario.id}">
             <f:facet name="header">
                 Lista de Usuários
@@ -71,17 +74,27 @@
             
             <p:column style="width:3rem;text-align: center">
                 <p:commandButton update="inputForm:inputGrid inputForm:inputButtons mensagemValidacao"  value="Editar" title="Editar"
-                   action="#{usuarioController.editar(usuario)}"/>
+                   action="#{usuarioController.editar(usuario)}">
+                   <p:confirm type="popup" header="Confirmation" message="Deseja ir para tela de edição ?" icon="pi pi-info-circle"/>
+                 </p:commandButton>
              </p:column>  
              
              <p:column style="width:3rem;text-align: center">
                 
                    
                    <p:commandButton update="inputForm:inputGrid formData mensagemValidacao " icon="pi pi-times" title="Excluir"
-                   action="#{usuarioController.excluir(usuario)}" styleClass="rounded-button ui-button-danger ui-button-outlined" />
+                   action="#{usuarioController.excluir(usuario)}" styleClass="rounded-button ui-button-danger ui-button-outlined" >
+                       <p:confirm type="popup" header="Confirmation" message="Tem certeza que deseja excluir esse usuário?" icon="pi pi-info-circle"/>
+                   </p:commandButton>
+                   
+                   <p:confirmPopup global="true">
+                      <p:commandButton value="Não" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+                      <p:commandButton value="Sim" type="button" styleClass="ui-confirm-popup-yes" />
+        </p:confirmPopup>
              </p:column> 
                
         </p:dataTable>
+         </p:overlayPanel>
           </h:form>
 
 </h:body>
