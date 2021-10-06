@@ -1,4 +1,4 @@
-package br.unitins.curriculoggp.application;
+package br.unitins.curriculoggac.application;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
