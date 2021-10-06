@@ -26,8 +26,8 @@ public class UsuarioCadastroController extends Controller <Usuario> implements S
 		
 		if(getConfirmarSenha().equals(entity.getSenha()) ) {
 			try {
-				List<Usuario> aux = getUsuarioRepository().findByEmail(entity.getEmail());
-				if(! aux.isEmpty() ) {
+				Usuario aux = getUsuarioRepository().findById(entity.getEmail());
+				if(!(aux == null) ) {
 					Util.addErrorMessage("Email já está em uso.");
 					return null;
 				}

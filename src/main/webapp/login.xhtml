@@ -9,12 +9,7 @@
 </h:head>	
 
 <h:body>
-  <div id="menu">
-      <ui:insert>
-          <ui:include src="template/menu.xhtml"></ui:include>
-     </ui:insert>
-      
-  </div>
+ 
 <h:messages  id="mensagemValidacao" style="color:#555F5E;margin:8px;" />
 
 <h:form id="inputForm" style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
@@ -31,19 +26,19 @@
     
     <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
         <label for="firstname">Email</label>
-        <p:inputText id="email" type="text" value="#{usuarioCadastroController.entity.email}" />
+        <p:inputText id="email" type="text" value="#{loginController.email}" />
     </div>
     
     <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
         <label for="firstname">Senha</label>
-        <p:password id="toggle" value="#{usuarioCadastroController.entity.senha}" toggleMask="true" redisplay="true"/>
+        <p:password id="toggle" value="#{loginController.senha}" toggleMask="true" redisplay="true"/>
     </div>
     
      
     
 </div>
         <div class="card" style="padding: 0px 0px 15px 0px;" >
-             <p:link outcome="usuarioCadastro.xhtml"  value="Ainda não tenho cadastro.Quero me registrar.">
+             <p:link outcome="usuarioCadastro.xhtml"  value="Ainda não tenho cadastro. Quero me registrar.">
                  <f:param name="productId" value="10"/>
               </p:link>
         </div>
@@ -52,7 +47,7 @@
                 
                    
                    <p:commandButton update="inputForm mensagemValidacao " value="Entrar" icon="pi pi-check" title="Cadastrar"
-                   action="#{usuarioCadastroController.salvarUsuario}" styleClass="ui-button-outlined ui-button-success" >
+                   action="#{loginController.entrar}" styleClass="ui-button-outlined ui-button-success" >
                        
                    </p:commandButton>
                    

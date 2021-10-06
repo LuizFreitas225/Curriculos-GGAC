@@ -2,10 +2,9 @@ package br.unitins.curriculoggac.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -15,9 +14,6 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
-	
 	@Column(nullable= false, length = 70, unique = true)
 	@NotEmpty(message =  "O email é um campo obrigatório.")
 	@Email(message = "Insira um email válido.")
@@ -38,22 +34,14 @@ public class Usuario {
 	}
     
 
-	public Usuario(Integer id, @Email String email, String senha) {
+	public Usuario( @Email String email, String senha) {
 		super();
-		this.id = id;
+		
 		this.email = email;
 		this.senha = senha;
 	}
 
 
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 
 	public String getSobreNome() {
