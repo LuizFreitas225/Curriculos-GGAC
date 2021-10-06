@@ -54,18 +54,23 @@
      
     
 </div>
+        <div class="card" style="padding: 0px 0px 15px 0px;" >
+             <p:link outcome="login.xhtml"  value="Voltar para o login."/>
+                
+        </div>
         
          <div style="width:3rem;text-align: center">
                 
                    
                    <p:commandButton update="inputForm mensagemValidacao " value="Cadastrar" icon="pi pi-check" title="Cadastrar"
-                   action="#{usuarioCadastroController.salvar}" styleClass="ui-button-outlined ui-button-success" >
-                       <p:confirm type="popup" header="Confirmation" message="Tem certeza que deseja excluir esse usuário?" icon="pi pi-info-circle"/>
+                   action="#{usuarioCadastroController.salvarUsuario}" styleClass="ui-button-outlined ui-button-success" >
+                       <p:confirm type="popup" header="Confirmation" message="Lembre-se de revisar os dados." icon="pi pi-info-circle"/>
                    </p:commandButton>
                    
                    <p:confirmPopup global="true">
-                      <p:commandButton value="Não" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
-                      <p:commandButton value="Sim" type="button" styleClass="ui-confirm-popup-yes" />
+                      <p:commandButton value="Confirma cadastro" type="button" styleClass="ui-confirm-popup-yes" />
+                      <p:commandButton value="Revisar" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+                     
         </p:confirmPopup>
              </div> 
          

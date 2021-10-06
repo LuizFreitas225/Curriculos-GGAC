@@ -19,9 +19,51 @@
 
 <h:form id="inputForm" style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; "  >
-	
+    
+   
+	<h1>Login </h1>
+      <p:messages id="mensagemValidacao" showDetail="true" closable="true">
+            <p:autoUpdate/>
+        </p:messages>
+      
+	 <div class="ui-fluid">
+    
+    
+    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
+        <label for="firstname">Email</label>
+        <p:inputText id="email" type="text" value="#{usuarioCadastroController.entity.email}" />
+    </div>
+    
+    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
+        <label for="firstname">Senha</label>
+        <p:password id="toggle" value="#{usuarioCadastroController.entity.senha}" toggleMask="true" redisplay="true"/>
+    </div>
+    
+     
+    
+</div>
+        <div class="card" style="padding: 0px 0px 15px 0px;" >
+             <p:link outcome="usuarioCadastro.xhtml"  value="Ainda não tenho cadastro.Quero me registrar.">
+                 <f:param name="productId" value="10"/>
+              </p:link>
+        </div>
+        
+         <div style="width:3rem;text-align: center">
+                
+                   
+                   <p:commandButton update="inputForm mensagemValidacao " value="Entrar" icon="pi pi-check" title="Cadastrar"
+                   action="#{usuarioCadastroController.salvarUsuario}" styleClass="ui-button-outlined ui-button-success" >
+                       
+                   </p:commandButton>
+                   
+                   
+             </div> 
          
     </h:form>
+    
+	
+         
+ 
     
     
     

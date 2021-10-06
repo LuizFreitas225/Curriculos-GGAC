@@ -11,7 +11,7 @@ import br.unitins.curriculoggac.model.Usuario;
 public abstract class Controller<T> {
 	
 	protected T entity = null;
-	private Repository<T> repository ;
+	private Repository<T> repository = new Repository<T>();
 	
 	public Controller() {
 		super();

@@ -42,7 +42,7 @@ public class SecurityFilter implements Filter {
 			usuario = (Usuario) session.getAttribute("usuarioLogado");
 		
 		if (usuario == null) {
-			((HttpServletResponse) response).sendRedirect("/PetShop/faces/login.xhtml");
+			((HttpServletResponse) response).sendRedirect("/CurriculoGGP/faces/login.xhtml");
 		} else {
 			chain.doFilter(request, response);
 			return;

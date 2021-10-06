@@ -20,8 +20,8 @@ public class UsuarioCadastroController extends Controller <Usuario> implements S
     String confirmarSenha= "";
     UsuarioRepository usuarioRepository;
 
-	@Override
-	public void salvar() {
+	
+	public String salvarUsuario() {
 		
 		
 		if(getConfirmarSenha().equals(entity.getSenha()) ) {
@@ -29,18 +29,22 @@ public class UsuarioCadastroController extends Controller <Usuario> implements S
 				List<Usuario> aux = getUsuarioRepository().findByEmail(entity.getEmail());
 				if(! aux.isEmpty() ) {
 					Util.addErrorMessage("Email já está em uso.");
-					return;
+					return null;
 				}
 				usuarioRepository.save(entity);
 			} catch (RepositoryException e) {
 				Util.addErrorMessage("Problema ao salvar, tente novamente ou entre em contato com a TI.");
+				return null;
 			}
 		}else {
 			
 			Util.addErrorMessage("Verifique a confirmação de senha e tente novamente.");
+			return null;
 		}
 		
-		
+		limpar();
+		setConfirmarSenha("");
+		return "login.xhtml?faces-redirect=true";
 	}
     
 	
