@@ -1,6 +1,6 @@
 package br.unitins.curriculoggac.controller;
 
-import java.util.List;
+
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

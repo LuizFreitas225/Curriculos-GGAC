@@ -25,7 +25,7 @@ public class Curriculo {
 	    private String descricao;
 	    @CreationTimestamp
 	    @Temporal(TemporalType.TIMESTAMP)
-	    @Column(name = "dtSolicitacao")
+	    @Column(name = "dt_cadastro")
 	    private Date dtCadastro;
 	    
 	    @ManyToOne

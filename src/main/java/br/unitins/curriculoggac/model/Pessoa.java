@@ -1,6 +1,6 @@
 package br.unitins.curriculoggac.model;
 
-import java.util.Date;
+
 
 
 import javax.persistence.Entity;

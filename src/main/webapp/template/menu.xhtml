@@ -7,7 +7,7 @@
 	  
 <ui:composition>	  
 <div class="card">
-    <h:form>
+    <h:form id="formMenu">
         <p:growl id="messages"/>
 
         <p:menubar>
@@ -16,20 +16,13 @@
                 
                 <p:menuitem value="Visualizar" url="curriculo.xhtml" icon="pi pi-eye"/>
                 <p:divider />
-               <p:menuitem value="Novo" url="template/menu.xhtml" icon="pi pi-plus"/>
+               <p:menuitem value="Novo" url="curriculo.xhtml" icon="pi pi-plus"/>
             </p:submenu>
                
            
 
             <p:submenu label="Usuário" icon="pi pi-fw pi-user">
-                <p:menuitem value="Editar" icon="pi pi-pencil" />
-                <p:menuitem value="Delete" icon="pi pi-fw pi-user-minus"/>
-                <p:submenu label="Search" icon="pi pi-fw pi-users">
-                    <p:submenu label="Filter" icon="pi pi-fw pi-filter">
-                        <p:menuitem value="Print" icon="pi pi-fw pi-print"/>
-                    </p:submenu>
-                    <p:menuitem value="List" icon="pi pi-fw pi-bars"/>
-                </p:submenu>
+                <p:menuitem value="Novo" url="usuarioCadastro.xhtml" icon="pi pi-plus"/>
             </p:submenu>
 
            
@@ -37,56 +30,15 @@
 
             <p:divider layout="vertical"/>
 
-            <p:menuitem value="Sair" icon="pi pi-fw pi-power-off"/>
+            <p:menuitem value="Sair" action="#{menuController.encerrarSessao}" icon="pi pi-fw pi-power-off"/>
 
             <f:facet name="options">
                 
                 <p:button value="Novo" icon="pi pi-plus" styleClass="ui-button-info" action="curriculo.xhtml"/>
                 
-                <p:commandButton id="movieBtn" value="Listar Usuários" type="button" icon="pi pi-search" />
-         <p:overlayPanel for="movieBtn" dynamic="true" style="width:600px" widgetVar="moviePicker">
-         
-        <p:dataTable id="usuarios" var="usuario" value="#{usuarioController.todos}" rowKey="#{usuario.id}">
-            <f:facet name="header">
-                Lista de Usuários
-            </f:facet>
-              
-            <p:column headerText="Id">
-                <h:outputText value="#{usuario.id}" />
-            </p:column>
-            <p:column headerText="Nome">
-                <h:outputText value="#{usuario.nome}" />
-            </p:column>
-            <p:column headerText="Descrição">
-                <h:outputText value="#{usuario.descricao}" />
-            </p:column>
-            <p:column headerText="Senha">
-                <h:outputText value="#{usuario.senha}" />
-            </p:column>
-            
-            <p:column style="width:3rem;text-align: center">
-                <p:commandButton update="inputForm:inputGrid inputForm:inputButtons mensagemValidacao"  value="Editar" title="Editar"
-                   action="#{usuarioController.editar(usuario)}">
-                   <p:confirm type="popup" header="Confirmation" message="Deseja ir para tela de edição ?" icon="pi pi-info-circle"/>
-                 </p:commandButton>
-             </p:column>  
-             
-             <p:column style="width:3rem;text-align: center">
-                
-                   
-                   <p:commandButton update="inputForm:inputGrid formData mensagemValidacao " icon="pi pi-times" title="Excluir"
-                   action="#{usuarioController.excluir(usuario)}" styleClass="rounded-button ui-button-danger ui-button-outlined" >
-                       <p:confirm type="popup" header="Confirmation" message="Tem certeza que deseja excluir esse usuário?" icon="pi pi-info-circle"/>
-                   </p:commandButton>
-                   
-                   <p:confirmPopup global="true">
-                      <p:commandButton value="Não" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
-                      <p:commandButton value="Sim" type="button" styleClass="ui-confirm-popup-yes" />
-        </p:confirmPopup>
-             </p:column> 
-               
-        </p:dataTable>
-         </p:overlayPanel>
+                <p:commandButton update="formMenu"  actionListener="#{menuController.abrirCurriculoListing}" id="movieBtn"
+                 value="Listar Currículos" type="button" icon="pi pi-search" />
+        
         
             </f:facet>
         </p:menubar>

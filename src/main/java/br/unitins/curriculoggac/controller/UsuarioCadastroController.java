@@ -1,12 +1,12 @@
 package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import br.unitins.curriculoggac.Repository.Repository;
+
 import br.unitins.curriculoggac.Repository.UsuarioRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Util;

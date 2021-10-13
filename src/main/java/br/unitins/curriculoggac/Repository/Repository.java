@@ -1,6 +1,7 @@
 package br.unitins.curriculoggac.Repository;
 
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -59,7 +60,23 @@ public class Repository<T> {
 		}
 
 	}
+    
+	public T findById(int id) throws RepositoryException {
+		try {
+			// obtendo o tipo da classe de forma generica (a classe deve ser publica)
+			final ParameterizedType type = 	(ParameterizedType) getClass().getGenericSuperclass();
+			Class<T> tClass = (Class<T>) (type).getActualTypeArguments()[0];
+			
+			T t = (T) getEntityManager().find(tClass, id);
+			return t;
+		} catch (Exception e) {
+			System.out.println("Erro ao executar o método find do Repository");
+			e.printStackTrace();
+			throw new RepositoryException("Erro ao buscar os dados");
+		}
+	}
 
+	
 	protected EntityManager getEntityManager() {
 		return em;
 	}

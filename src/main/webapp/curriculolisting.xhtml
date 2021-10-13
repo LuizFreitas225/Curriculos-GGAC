@@ -1,0 +1,107 @@
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:head>
+	<title>Consulta de Currículo</title>
+</h:head>
+
+<h:body>	
+
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide()" />
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="/images/processando.gif" />
+		</p:dialog>
+
+		<h:form>
+			<p:growl id="growl" globalOnly="false" />
+			<p:panel id="panel">
+				<f:facet name="header">
+					<div align="center">
+						<div class="ui-g ui-fluid">
+							<div class="ui-g-12">					
+								<div class="card card-w-title">
+		                            <div class="ui-inputgroup">
+		                                <p:inputText id="itFiltro" 
+		                                	value="#{curriculoListing.filtro}"
+		                                	placeholder="Informe o nome do curriculo..." />        
+		                                <p:commandButton value="Pesquisar"
+											actionListener="#{curriculoListing.pesquisar}"
+											process="@this itFiltro" update="dtCurriculo" /> 
+		                            </div>
+			                    </div>
+							</div>
+						</div>
+					</div>
+				</f:facet>
+				
+				 <div class="ui-g ui-fluid">
+					<div class="ui-g-12">
+					
+						<div class="card card-w-title" >
+
+							<p:dataTable id="dtCurriculo" var="curriculo"
+			value="#{curriculoListing.list}" rowIndexVar="row"
+								paginator="false"
+								reflow="true" >
+			<f:facet name="header">
+                Lista de Currículos
+            </f:facet>
+
+			<p:column headerText="Id">
+				
+				<p:commandLink value="#{curriculo.id}"
+										actionListener="#{curriculoListing.select(entity.id)}"
+										process="@this" update="@form"/>
+			</p:column>
+
+			<p:column headerText="Descrição">
+				<p:commandLink value="#{curriculo.descricao}"
+										actionListener="#{curriculoListing.select(entity.id)}"
+										process="@this" update="@form"/>
+			</p:column>
+
+
+			<p:column style="width:3rem;text-align: center" headerText="Opções">
+
+
+				<p:commandButton type="button" icon="pi pi-eye" process="formMenu"
+					update="formMenu" action="menu.xhtml"
+					styleClass="rounded-button ui-button-help ui-button-flat">
+				</p:commandButton>
+
+
+			</p:column>
+			<p:column style="width:3rem;text-align: center">
+				<p:commandButton type="button" icon="pi pi-times"
+					process="formCurriculo" update="formCurriculo"
+					action="#{menuController.excluirCurriculo(curriculo.id)}"
+					styleClass="rounded-button ui-button-danger">
+					<p:confirm type="popup" header="Confirmation"
+						message="Deseja mesmo excluir esse currículo?"
+						icon="pi pi-info-circle" />
+				</p:commandButton>
+			</p:column>
+
+
+
+
+		</p:dataTable>
+						</div>
+					</div>
+				</div>
+			</p:panel>
+
+		</h:form>
+</h:body>
+
+</html>
