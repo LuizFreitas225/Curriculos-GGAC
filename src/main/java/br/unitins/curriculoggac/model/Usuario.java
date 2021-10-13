@@ -1,10 +1,12 @@
 package br.unitins.curriculoggac.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -27,6 +29,9 @@ public class Usuario {
 	@NotEmpty(message =  "O sobrenome é um campo obrigatório.")
 	@Column(nullable= false, length = 150)
 	private  String sobreNome;
+	
+	@OneToMany(mappedBy = "usuario")
+    private List<Curriculo> listCurriculo;
 	
 	public Usuario() {
 		super();
