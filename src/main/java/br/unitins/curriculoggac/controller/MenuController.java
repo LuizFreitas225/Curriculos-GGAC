@@ -13,9 +13,11 @@ import br.unitins.curriculoggac.Repository.PessoaRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Session;
 import br.unitins.curriculoggac.controller.listing.CurriculoListing;
+import br.unitins.curriculoggac.controller.listing.PaisListing;
 import br.unitins.curriculoggac.model.Curriculo;
 import br.unitins.curriculoggac.model.Pessoa;
 import br.unitins.curriculoggac.model.Usuario;
+import br.unitins.curriculoggac.model.endereco.Pais;
 
 @Named
 @RequestScoped
@@ -107,4 +109,15 @@ public PessoaRepository getCurriculoRepository() {
 		}
 		return usuarioLogado;
 	}
+	
+	public void abrirPaisListing() {
+		PaisListing listing = new PaisListing();
+		listing.open();
+		
+		System.out.println("Abrir Pais List");
+	}
+	
+//	public void obterPaisListing(SelectEvent<Pais> event) {
+//		setEntity(event.getObject());
+//	}
 }

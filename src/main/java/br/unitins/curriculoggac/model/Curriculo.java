@@ -17,64 +17,61 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Curriculo {
-	
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)  
-	    private Long id;
-	    
-	    private String descricao;
-	    @CreationTimestamp
-	    @Temporal(TemporalType.TIMESTAMP)
-	    @Column(name = "dt_cadastro")
-	    private Date dtCadastro;
-	    
-	    @ManyToOne
-	    private Usuario usuario;
-        
-	    @OneToOne(cascade = CascadeType.ALL)
-	    private Pessoa pessoa;
-	    
-		public Long getId() {
-			return id;
-		}
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-		public String getDescricao() {
-			return descricao;
-		}
+	private String descricao;
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dt_cadastro")
+	private Date dtCadastro;
 
-		public void setDescricao(String descricao) {
-			this.descricao = descricao;
-		}
+	@ManyToOne
+	private Usuario usuario;
 
-		public Date getDtCadastro() {
-			return dtCadastro;
-		}
+	@OneToOne(cascade = CascadeType.ALL)
+	private Pessoa pessoa;
 
-		public void setDtCadastro(Date dtCadastro) {
-			this.dtCadastro = dtCadastro;
-		}
+	public Long getId() {
+		return id;
+	}
 
-		public Usuario getUsuario() {
-			return usuario;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public void setUsuario(Usuario usuario) {
-			this.usuario = usuario;
-		}
+	public String getDescricao() {
+		return descricao;
+	}
 
-		public Pessoa getPessoa() {
-			return pessoa;
-		}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-		public void setPessoa(Pessoa pessoa) {
-			this.pessoa = pessoa;
-		}
-	    
-	    
-	    
-	    
+	public Date getDtCadastro() {
+		return dtCadastro;
+	}
+
+	public void setDtCadastro(Date dtCadastro) {
+		this.dtCadastro = dtCadastro;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 }

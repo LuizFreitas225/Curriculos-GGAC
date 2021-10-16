@@ -4,7 +4,8 @@
 		<class>br.unitins.curriculoggac.model.Usuario</class>
 		<class>br.unitins.curriculoggac.model.Curriculo</class>
 		<class>br.unitins.curriculoggac.model.Pessoa</class>
-		<class>br.unitins.curriculoggac.model.DefaultEntity</class>
+		<class>br.unitins.curriculoggac.model.endereco.Pais</class>
+		
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"
