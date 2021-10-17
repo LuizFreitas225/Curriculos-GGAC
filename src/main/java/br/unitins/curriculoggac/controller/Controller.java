@@ -5,6 +5,7 @@ import br.unitins.curriculoggac.Repository.Repository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Util;
 
+
 public abstract class Controller<T> {
 
 	protected T entity = null;

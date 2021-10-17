@@ -27,6 +27,9 @@ public class Repository<T> {
 			getEntityManager().getTransaction().commit();
 			return e;
 		} catch (Exception e) {
+			if(getEntityManager().isOpen()) {
+				getEntityManager().getTransaction().commit();
+			}
 			System.out.println("Erro ao executar o save");
 			e.printStackTrace();
 			throw new RepositoryException("Erro ao Salvar");

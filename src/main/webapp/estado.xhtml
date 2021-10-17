@@ -22,27 +22,44 @@
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
 
-		<h1>Gerenciaomento de Países</h1>
+		<h1>Gerenciaomento de Estados</h1>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 
 		</p:messages>
 
-		<div class="ui-fluid">
+		<h:panelGrid columns="2">
 			<div class="p-field" style="padding: 0px 0px 10px 0px;">
 				<label for="firstname">Nome</label>
 				<p:inputText id="nome" type="text"
-					value="#{paisController.entity.nome}" />
+					value="#{estadoController.entity.nome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
-				<label for="firstname">Nacionalidade</label>
+				<label for="firstname">Sigla</label>
 				<p:inputText id="sobrenome" type="text"
-					value="#{paisController.entity.nacionalidade}" />
+					value="#{estadoController.entity.sigla}" />
 			</div>
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Pais</label>
+
+			</div>
+			<h:panelGroup>
+
+				<div class="ui-inputgroup">
+					<p:inputText style="width:185px"
+						value="#{estadoController.entity.pais.nome}" />
+					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
+						actionListener="#{estadoController.abrirPaisListing}">
+						<p:ajax event="dialogReturn"
+							listener="#{estadoController.obterPaisListing}" update="@form" />
+					</p:commandButton>
+				</div>
+			</h:panelGroup>
 
 
 
-		</div>
+
+		</h:panelGrid>
 
 
 		<div style="width: 3rem; text-align: center">
@@ -52,26 +69,27 @@
 
 			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
 				value="Pesquisar."
-				actionListener="#{paisController.abrirPaisListing}">
+				actionListener="#{estadoController.abrirEstadoListing}">
 				<p:ajax event="dialogReturn"
-					listener="#{paisController.obterPaisListing}" update="inputForm" />
+					listener="#{estadoController.obterEstadoListing}"
+					update="inputForm" />
 			</p:commandLink>
 
 
 			<h:panelGrid columns="5" id="panelButtons">
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Cadastrar" icon="pi pi-save" title="Cadastrar"
-					action="#{paisController.salvar}"
+					action="#{estadoController.salvar}"
 					styleClass="ui-button-raised ui-button-success ui-button-flat"
 					style="margin: 15px 0px 0px 0px;"
-					rendered="#{paisController.entity.id == null}">
+					rendered="#{estadoController.entity.id == null}">
 					<p:confirm type="popup" header="Confirmation"
 						message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
 				</p:commandButton>
 
 
 				<p:commandButton value="Limpar"
-					actionListener="#{paisController.limpar}" process="@this"
+					actionListener="#{estadoController.limpar}" process="@this"
 					update="@form panelButtons"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;" />
@@ -80,20 +98,20 @@
 
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Alterar" icon="pi pi-pencil" title="Alterar"
-					action="#{paisController.salvar}"
+					action="#{estadoController.salvar}"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;"
-					rendered="#{paisController.entity.id != null}">
+					rendered="#{estadoController.entity.id != null}">
 					<p:confirm type="popup" header="Confirmation"
 						message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
 				</p:commandButton>
 
 				<p:commandButton value="Excluir"
-					actionListener="#{paisController.excluir}" process="@form"
+					actionListener="#{estadoController.excluir}" process="@form"
 					update="@form mensagemValidacao panelButtons "
 					styleClass="ui-button-raised ui-button-danger ui-button-flat"
 					icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
-					rendered="#{paisController.entity.id != null}">
+					rendered="#{estadoController.entity.id != null}">
 
 
 					<p:confirm type="popup" header="Confirmation"

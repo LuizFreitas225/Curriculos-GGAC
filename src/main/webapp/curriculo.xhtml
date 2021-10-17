@@ -1,90 +1,99 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
-</h:head>	
+	<title>Gerenciamento de Currículo</title>
+</h:head>
 
 <h:body>
-  <div id="menu">
-      <ui:insert>
-          <ui:include src="template/menu.xhtml"></ui:include>
-     </ui:insert>
-      
-  </div>
-   <h:form id="inputForm" style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
-    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; "  >
-    
-   
-	<h1>Criando um currículo... </h1>
-	<h2>Insira os dados pessoais que aparecerá no currículo: </h2>
-      <p:messages id="mensagemValidacao" showDetail="true" closable="true">
-            <p:autoUpdate/>
-        </p:messages>
-      
-	 <div class="ui-fluid">
-    <div class="p-field" style="padding: 0px 0px 10px 0px; "  >
-        <label for="firstname"> Primeiro Nome</label>
-        <p:inputText id="nome" placeholder="Exemplo: Luiz Felipe"
-         type="text" value="#{menuController.pessoa.nome}" />
-    </div> 
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Sobrenome</label>
-        <p:inputText id="sobrenome" placeholder="Exemplo: Da Silva..."  type="text" value="#{menuController.pessoa.sobreNome}" />
-    </div> 
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Idade</label>
-        <p:inputText id="Idade" placeholder="Exemplo: 18" type="text" value="#{menuController.pessoa.idade}" />
-    </div>
-      
-      <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Endereço</label>
-        <p:inputText id="endereco" placeholder="Estado ,Cidade e Bairro..." type="text" value="#{menuController.pessoa.endereco}" />
-    </div>
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Estado Civil</label>
-        <p:inputText id="estadoCivil" placeholder="Exemplo: Solteiro" type="text" value="#{menuController.pessoa.estadoCivil}" />
-    </div>
-    
-     
-    
-</div>
-        <div class="card" style="padding: 0px 0px 15px 0px;" >
-             <p:link outcome="login.xhtml"  value="Voltar para o login."/>
-                
-        </div>
-        
-         <div style="width:3rem;text-align: center">
-                    
-                    <p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-				actionListener="#{menuController.abrirPaisListing}" >
-				<p:ajax event="dialogReturn"
-					 update="@form" />
-			</p:commandButton>
-                   
-                   <p:commandButton update="inputForm mensagemValidacao " value="Cadastrar" icon="pi pi-check" title="Cadastrar"
-                   action="#{menuController.salvarCurriculo}" styleClass="ui-button-outlined ui-button-success" >
-                       <p:confirm type="popup" header="Confirmation" message="Lembre-se de revisar os dados." icon="pi pi-info-circle"/>
-                   </p:commandButton>
-                   
-                   <p:confirmPopup global="true">
-                      <p:commandButton value="Confirmar" type="button" styleClass="ui-confirm-popup-yes" />
-                      <p:commandButton value="Revisar" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
-                     
-        </p:confirmPopup>
-             </div> 
-         
-    </h:form>
-    
+	<div id="menu">
+		<ui:insert>
+			<ui:include src="template/menu.xhtml"></ui:include>
+		</ui:insert>
 
-       
-    
+	</div>
+	<h:form id="inputForm"
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; ">
+
+
+		<h1>Criando um currículo...</h1>
+		<h2>Insira os dados pessoais que aparecerá no currículo:</h2>
+		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<div class="ui-fluid">
+			<div class="p-field" style="padding: 0px 0px 10px 0px;">
+				<label for="firstname"> Primeiro Nome</label>
+				<p:inputText id="nome" placeholder="Exemplo: Luiz Felipe"
+					type="text" value="#{menuController.pessoa.nome}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Sobrenome</label>
+				<p:inputText id="sobrenome" placeholder="Exemplo: Da Silva..."
+					type="text" value="#{menuController.pessoa.sobreNome}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Idade</label>
+				<p:inputText id="Idade" placeholder="Exemplo: 18" type="text"
+					value="#{menuController.pessoa.idade}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Endereço</label>
+				<p:inputText id="endereco" placeholder="Estado ,Cidade e Bairro..."
+					type="text" value="#{menuController.pessoa.endereco}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Estado Civil</label>
+				<p:inputText id="estadoCivil" placeholder="Exemplo: Solteiro"
+					type="text" value="#{menuController.pessoa.estadoCivil}" />
+			</div>
+
+
+
+		</div>
+		<div class="card" style="padding: 0px 0px 15px 0px;">
+			<p:link outcome="login.xhtml" value="Voltar para o login." />
+
+		</div>
+
+		<div style="width: 3rem; text-align: center">
+
+			<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
+				actionListener="#{menuController.abrirPaisListing}">
+				<p:ajax event="dialogReturn" update="@form" />
+			</p:commandButton>
+
+			<p:commandButton update="inputForm mensagemValidacao "
+				value="Cadastrar" icon="pi pi-check" title="Cadastrar"
+				action="#{menuController.salvarCurriculo}"
+				styleClass="ui-button-outlined ui-button-success">
+				<p:confirm type="popup" header="Confirmation"
+					message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
+			</p:commandButton>
+
+			<p:confirmPopup global="true">
+				<p:commandButton value="Confirmar" type="button"
+					styleClass="ui-confirm-popup-yes" />
+				<p:commandButton value="Revisar" type="button"
+					styleClass="ui-confirm-popup-no ui-button-flat" />
+
+			</p:confirmPopup>
+		</div>
+
+	</h:form>
+
+
+
+
 </h:body>
 
 </html>

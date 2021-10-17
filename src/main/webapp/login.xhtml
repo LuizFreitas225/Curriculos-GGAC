@@ -1,67 +1,72 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
-</h:head>	
+	<title>Login</title>
+</h:head>
 
 <h:body>
- 
-<h:messages  id="mensagemValidacao" style="color:#555F5E;margin:8px;" />
 
-<h:form id="inputForm" style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
-    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; "  >
-    
-   
-	<h1>Login </h1>
-      <p:messages id="mensagemValidacao" showDetail="true" closable="true">
-            <p:autoUpdate/>
-        </p:messages>
-      
-	 <div class="ui-fluid">
-    
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Email</label>
-        <p:inputText id="email" type="text" value="#{loginController.email}" />
-    </div>
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Senha</label>
-        <p:password id="toggle" value="#{loginController.senha}" toggleMask="true" redisplay="true"/>
-    </div>
-    
-     
-    
-</div>
-        <div class="card" style="padding: 0px 0px 15px 0px;" >
-             <p:link outcome="usuarioCadastro.xhtml"  value="Ainda não tenho cadastro. Quero me registrar.">
-                 <f:param name="productId" value="10"/>
-              </p:link>
-        </div>
-        
-         <div style="width:3rem;text-align: center">
-                
-                   
-                   <p:commandButton update="inputForm mensagemValidacao " value="Entrar" icon="pi pi-check" title="Cadastrar"
-                   action="#{loginController.entrar}" styleClass="ui-button-outlined ui-button-success" >
-                       
-                   </p:commandButton>
-                   
-                   
-             </div> 
-         
-    </h:form>
-    
-	
-         
- 
-    
-    
-    
+	<h:messages id="mensagemValidacao" style="color:#555F5E;margin:8px;" />
+
+	<h:form id="inputForm"
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; ">
+
+
+		<h1>Login</h1>
+		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<div class="ui-fluid">
+
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Email</label>
+				<p:inputText id="email" type="text" value="#{loginController.email}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Senha</label>
+				<p:password id="toggle" value="#{loginController.senha}"
+					toggleMask="true" redisplay="true" />
+			</div>
+
+
+
+		</div>
+		<div class="card" style="padding: 0px 0px 15px 0px;">
+			<p:link outcome="usuarioCadastro.xhtml"
+				value="Ainda não tenho cadastro. Quero me registrar.">
+
+			</p:link>
+		</div>
+
+		<div style="width: 3rem; text-align: center">
+
+
+			<p:commandButton update="inputForm mensagemValidacao " value="Entrar"
+				icon="pi pi-check" title="Cadastrar"
+				action="#{loginController.entrar}"
+				styleClass="ui-button-outlined ui-button-success">
+
+			</p:commandButton>
+
+
+		</div>
+
+	</h:form>
+
+
+
+
+
+
+
 </h:body>
 
 </html>
