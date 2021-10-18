@@ -1,3 +1,4 @@
+
 package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
@@ -17,7 +18,6 @@ import br.unitins.curriculoggac.controller.listing.PaisListing;
 import br.unitins.curriculoggac.model.Curriculo;
 import br.unitins.curriculoggac.model.Pessoa;
 import br.unitins.curriculoggac.model.Usuario;
-import br.unitins.curriculoggac.model.endereco.Pais;
 
 @Named
 @RequestScoped
@@ -54,7 +54,7 @@ public class MenuController extends Controller<Curriculo> implements Serializabl
 	}
 	public String encerrarSessao() {
 		Session.getInstance().invalidateSession();
-		return "login.xhtml";
+		return "/faces/login.xhtml?faces-redirect=true" ;
 	}
 	
 

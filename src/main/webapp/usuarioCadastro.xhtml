@@ -1,78 +1,91 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
-</h:head>	
+</h:head>
 
 <h:body>
- 
 
 
-<h:form id="inputForm" style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
-    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px; "  >
-    
-   
-	<h1>Cadastre-se </h1>
-      <p:messages id="mensagemValidacao" showDetail="true" closable="true">
-            <p:autoUpdate/>
-        </p:messages>
-      
-	 <div class="ui-fluid">
-    <div class="p-field" style="padding: 0px 0px 10px 0px; "  >
-        <label for="firstname">Nome</label>
-        <p:inputText id="nome" type="text" value="#{usuarioCadastroController.entity.nome}" />
-    </div> 
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Sobrenome</label>
-        <p:inputText id="sobrenome" type="text" value="#{usuarioCadastroController.entity.sobreNome}" />
-    </div> 
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Email</label>
-        <p:inputText id="email" type="text" value="#{usuarioCadastroController.entity.email}" />
-    </div>
-    
-    <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Senha</label>
-        <p:password id="toggle" value="#{usuarioCadastroController.entity.senha}" toggleMask="true" redisplay="true"/>
-    </div>
-    
-     <div class="p-field" style="padding: 0px 0px 15px 0px; "  >
-        <label for="firstname">Confirmar Senha</label>
-       <p:password id="confirmtoggle" value="#{usuarioCadastroController.confirmarSenha}" toggleMask="true" redisplay="true"/>
-    </div> 
-     
-    
-</div>
-        <div class="card" style="padding: 0px 0px 15px 0px;" >
-             <p:link outcome="login.xhtml"  value="Voltar para o login."/>
-                
-        </div>
-        
-         <div style="width:3rem;text-align: center">
-                
-                   
-                   <p:commandButton update="inputForm mensagemValidacao " value="Cadastrar" icon="pi pi-check" title="Cadastrar"
-                   action="#{usuarioCadastroController.salvarUsuario}" styleClass="ui-button-outlined ui-button-success" >
-                       <p:confirm type="popup" header="Confirmation" message="Lembre-se de revisar os dados." icon="pi pi-info-circle"/>
-                   </p:commandButton>
-                   
-                   <p:confirmPopup global="true">
-                      <p:commandButton value="Confirma cadastro" type="button" styleClass="ui-confirm-popup-yes" />
-                      <p:commandButton value="Revisar" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
-                     
-        </p:confirmPopup>
-             </div> 
-         
-    </h:form>
-    
-    
-    
+
+	<h:form id="inputForm"
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
+
+
+		<h1>Cadastre-se</h1>
+		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<div class="ui-fluid">
+			<div class="p-field" style="padding: 0px 0px 10px 0px;">
+				<label for="firstname">Nome</label>
+				<p:inputText id="nome" type="text"
+					value="#{usuarioCadastroController.entity.nome}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Sobrenome</label>
+				<p:inputText id="sobrenome" type="text"
+					value="#{usuarioCadastroController.entity.sobreNome}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Email</label>
+				<p:inputText id="email" type="text"
+					value="#{usuarioCadastroController.entity.email}" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Senha</label>
+				<p:password id="toggle"
+					value="#{usuarioCadastroController.entity.senha}" toggleMask="true"
+					redisplay="true" />
+			</div>
+
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Confirmar Senha</label>
+				<p:password id="confirmtoggle"
+					value="#{usuarioCadastroController.confirmarSenha}"
+					toggleMask="true" redisplay="true" />
+			</div>
+
+
+		</div>
+		<div class="card" style="padding: 0px 0px 15px 0px;">
+			<p:link outcome="/faces/login.xhtml" value="Voltar para o login." />
+
+		</div>
+
+		<div style="width: 3rem; text-align: center">
+
+
+			<p:commandButton update="inputForm mensagemValidacao "
+				value="Cadastrar" icon="pi pi-check" title="Cadastrar"
+				action="#{usuarioCadastroController.salvarUsuario}"
+				styleClass="ui-button-outlined ui-button-success">
+				<p:confirm type="popup" header="Confirmation"
+					message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
+			</p:commandButton>
+
+			<p:confirmPopup global="true">
+				<p:commandButton value="Confirma cadastro" type="button"
+					styleClass="ui-confirm-popup-yes" />
+				<p:commandButton value="Revisar" type="button"
+					styleClass="ui-confirm-popup-no ui-button-flat" />
+
+			</p:confirmPopup>
+		</div>
+
+	</h:form>
+
+
+
 </h:body>
 
 </html>

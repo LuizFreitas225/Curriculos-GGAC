@@ -1,5 +1,8 @@
 package br.unitins.curriculoggac.model.endereco;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -26,9 +30,19 @@ public class Estado {
 	@ManyToOne()
 	private Pais pais;
 	
+	@OneToMany(mappedBy = "estado", cascade = { CascadeType.REMOVE })
+    private List<Cidade> listCidades;
 	public Estado() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<Cidade> getListCidades() {
+		return listCidades;
+	}
+
+	public void setListCidades(List<Cidade> listCidades) {
+		this.listCidades = listCidades;
 	}
 
 	public Estado(Integer id, @NotEmpty(message = "O nome é um campo obrigatório.") String nome,

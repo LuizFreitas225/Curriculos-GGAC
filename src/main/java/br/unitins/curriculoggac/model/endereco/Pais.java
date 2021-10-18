@@ -24,7 +24,7 @@ public class Pais {
 	@NotNull(message = "A nacionalidade do país é um campo obrigatório.")
 	@Column(nullable = false, length = 150)
 	private String nacionalidade;
-	@OneToMany(mappedBy = "pais") //, cascade = { CascadeType.REMOVE })
+	@OneToMany(mappedBy = "pais", cascade = { CascadeType.REMOVE })
     private List<Estado> listEstados;
 	public Pais() {
 		super();
@@ -32,14 +32,6 @@ public class Pais {
 	}
 
 
-
-	public Pais(Integer id, @NotEmpty(message = "O nome é um campo obrigatório.") String nome,
-			@NotEmpty(message = "A nacionalidade é um campo obrigatório.") String nacionalidade) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.nacionalidade = nacionalidade;
-	}
 
 
 

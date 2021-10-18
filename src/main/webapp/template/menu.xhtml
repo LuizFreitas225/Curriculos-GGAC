@@ -1,49 +1,54 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
-	  
-<ui:composition>	  
-<div class="card">
-    <h:form id="formMenu">
-        <p:growl id="messages"/>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-        <p:menubar>
-            
-              <p:submenu label="Currículos"  icon="pi pi-fw pi-file">
-                
-                <p:menuitem value="Visualizar" url="curriculo.xhtml" icon="pi pi-eye"/>
-                <p:divider />
-               <p:menuitem value="Novo" url="curriculo.xhtml" icon="pi pi-plus"/>
-            </p:submenu>
-               
-           
+<ui:composition>
+	<div class="card">
+		<h:form id="formMenu">
+			<p:growl id="messages" />
 
-            <p:submenu label="Usuário" icon="pi pi-fw pi-user">
-                <p:menuitem value="Novo" url="usuarioCadastro.xhtml" icon="pi pi-plus"/>
-            </p:submenu>
+			<p:menubar>
 
-           
+				<p:submenu label="Currículos" icon="pi pi-fw pi-file">
+                    <p:menuitem value="Visualizar" url="curriculo.xhtml"  icon="pi pi-eye"/>
+					<p:menuitem value="Novo" url="curriculo.xhtml" icon="pi pi-plus" />
+				</p:submenu>
 
 
-            <p:divider layout="vertical"/>
 
-            <p:menuitem value="Sair" action="#{menuController.encerrarSessao}" icon="pi pi-fw pi-power-off"/>
+				<p:submenu label="Usuário" icon="pi pi-fw pi-user">
+					
+				</p:submenu>
 
-            <f:facet name="options">
-                
-                <p:button value="Novo" icon="pi pi-plus" styleClass="ui-button-info" action="curriculo.xhtml"/>
-                
-                
-        
-        
-            </f:facet>
-        </p:menubar>
-    </h:form>
-</div>
-	 
-</ui:composition>	
-</html> 
-	  
+				<p:submenu label="Endereço" icon="pi pi-map-marker" >
+					<p:menuitem value="Países" url="pais.xhtml"  icon="pi pi-map" />
+					<p:menuitem value="Estados" url="estado.xhtml"  icon="pi pi-map" />
+					<p:menuitem value="Cidades" url="cidade.xhtml"  icon="pi pi-map" />
+				</p:submenu>
+
+
+
+
+				<p:divider layout="vertical" />
+
+				<p:menuitem value="Sair" action="#{menuController.encerrarSessao}"
+					icon="pi pi-fw pi-power-off" />
+
+				<f:facet name="options">
+
+					<p:button value="Novo" icon="pi pi-plus"
+						styleClass="ui-button-info" action="curriculo.xhtml" />
+
+
+
+
+				</f:facet>
+			</p:menubar>
+		</h:form>
+	</div>
+
+</ui:composition>
+</html>

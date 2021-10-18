@@ -12,7 +12,7 @@
 
 	<div id="menu">
 		<ui:insert>
-			<ui:include src="template/menu.xhtml"></ui:include>
+			<ui:include src="../template/menu.xhtml"></ui:include>
 		</ui:insert>
 
 	</div>
@@ -24,7 +24,7 @@
 
 		<h1>Gerenciaomento de Países</h1>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
-
+			<p:autoUpdate />
 		</p:messages>
 
 		<div class="ui-fluid">
@@ -97,7 +97,7 @@
 
 
 					<p:confirm type="popup" header="Confirmation"
-						message="Deseja realmente excluir o País selecionado?"
+						message="Ao executar essa operação todas as cidades e estados vinculados também serão excluidas. Essa ação não poderá ser desfeita."
 						icon="pi pi-info-circle" />
 				</p:commandButton>
 

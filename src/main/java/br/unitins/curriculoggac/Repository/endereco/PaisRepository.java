@@ -26,7 +26,7 @@ public class PaisRepository extends Repository<Pais>  {
 			// mandando pro console o exception gerado
 			e.printStackTrace();
 			// repassando a excecao para quem vai executar o metodo
-			throw new RepositoryException("Problema ao pesquisar usuários.");
+			throw new RepositoryException("Problema ao pesquisar países.");
 		}
 	}
 }

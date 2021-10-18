@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Consulta de Estadod</title>
+	<title>Consulta de Estado</title>
 </h:head>
 
 <h:body>
@@ -58,16 +58,19 @@
 									process="@this" update="@form" />
 							</p:column>
 
-
+							<p:column headerText="País">
+								<p:commandLink value="#{entity.pais.nome}"
+									actionListener="#{estadoListing.select(entity.id)}"
+									process="@this" update="@form" />
+							</p:column>
 
 							<f:facet name="footer">
 							
 							        Total de #{estadoListing.list.size()} Estados.<br />
-								<p:link outcome="estado.xhtml"
-									value=">> Cadastrar novo >>">
-								
+								<p:link outcome="estado.xhtml" value=">> Cadastrar novo >>">
+
 								</p:link>
-								
+
 							</f:facet>
 
 

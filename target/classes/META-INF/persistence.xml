@@ -6,6 +6,7 @@
 		<class>br.unitins.curriculoggac.model.Pessoa</class>
 		<class>br.unitins.curriculoggac.model.endereco.Pais</class>
 		<class>br.unitins.curriculoggac.model.endereco.Estado</class>
+		<class>br.unitins.curriculoggac.model.endereco.Cidade</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"

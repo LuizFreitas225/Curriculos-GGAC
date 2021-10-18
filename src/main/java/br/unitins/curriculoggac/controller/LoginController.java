@@ -28,7 +28,7 @@ public class LoginController {
     		 }else {
     			 Session.getInstance().set("usuarioLogado", usuarioLogado);	
     			 Util.addInfoMessage("Login realizado com sucesso.");
-    			 return "curriculo.xhtml?faces-redirect=true";
+    			 return "/pages/estado.xhtml?faces-redirect=true";
     		 }
     	}catch(Exception e) {
     		e.printStackTrace();

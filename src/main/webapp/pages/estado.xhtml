@@ -12,7 +12,7 @@
 
 	<div id="menu">
 		<ui:insert>
-			<ui:include src="template/menu.xhtml"></ui:include>
+			<ui:include src="../template/menu.xhtml"></ui:include>
 		</ui:insert>
 
 	</div>
@@ -24,7 +24,7 @@
 
 		<h1>Gerenciaomento de Estados</h1>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
-
+			<p:autoUpdate />
 		</p:messages>
 
 		<h:panelGrid columns="2">
@@ -51,7 +51,7 @@
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
 						actionListener="#{estadoController.abrirPaisListing}">
 						<p:ajax event="dialogReturn"
-							listener="#{estadoController.obterPaisListing}" update="@form" />
+							listener="#{estadoController.obterPaisListing}"  update="@form" />
 					</p:commandButton>
 				</div>
 			</h:panelGroup>
@@ -115,7 +115,7 @@
 
 
 					<p:confirm type="popup" header="Confirmation"
-						message="Deseja realmente excluir o País selecionado?"
+						message="Ao executar essa operação todas as cidades vinculadas também serão excluidas. Essa ação não poderá ser desfeita."
 						icon="pi pi-info-circle" />
 				</p:commandButton>
 
