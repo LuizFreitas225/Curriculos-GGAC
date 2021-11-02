@@ -63,10 +63,11 @@
 							<f:facet name="footer">
 							
 							        Total de #{paisListing.list.size()} Países.<br />
-								<p:link outcome="pais.xhtml"
-									value=">> Cadastrar novo >>">
-									<f:param name="productId" value="10" />
-								</p:link>
+							
+							
+					    	<h:commandLink value=">> Cadastrar novo >>"
+						 
+								action="#{paisListing.crud}" />
 								
 							</f:facet>
 

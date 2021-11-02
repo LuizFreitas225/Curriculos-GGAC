@@ -7,6 +7,10 @@
 		<class>br.unitins.curriculoggac.model.endereco.Pais</class>
 		<class>br.unitins.curriculoggac.model.endereco.Estado</class>
 		<class>br.unitins.curriculoggac.model.endereco.Cidade</class>
+		<class>br.unitins.curriculoggac.converter.jpa.EstadoCivilConverter</class>
+		<class>br.unitins.curriculoggac.converter.jpa.TipoEnsinoConverter</class>
+		<class>br.unitins.curriculoggac.converter.jpa.StatusFormacaoConverter</class>
+		
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"

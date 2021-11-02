@@ -10,12 +10,12 @@
 
 <h:body>
 
-	<div id="menu">
+	<h:panelGroup id="menu" layout="block"
+		rendered="#{ ! paisController.paisRedirect  }">
 		<ui:insert>
 			<ui:include src="../template/menu.xhtml"></ui:include>
 		</ui:insert>
-
-	</div>
+	</h:panelGroup>
 
 	<h:form id="inputForm"
 		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
@@ -50,11 +50,13 @@
 
 
 
-			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
-				value="Pesquisar."
-				actionListener="#{paisController.abrirPaisListing}">
+			<p:commandLink id="ajax" process="@this"
+				update="inputForm mensagemValidacao " value="Pesquisar."
+				actionListener="#{paisController.abrirPaisListing}"
+				rendered="#{ ! paisController.paisRedirect  }">
 				<p:ajax event="dialogReturn"
-					listener="#{paisController.obterPaisListing}" update="inputForm" />
+					listener="#{paisController.obterPaisListing}" process="@this"
+					update="inputForm" />
 			</p:commandLink>
 
 

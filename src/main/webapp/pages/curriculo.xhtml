@@ -68,7 +68,7 @@
 		<div style="width: 3rem; text-align: center">
 
 			<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-				actionListener="#{menuController.abrirPaisListing}">
+				actionListener="#{menuController.abrirPaisListing}" process="@this">
 				<p:ajax event="dialogReturn" update="@form" />
 			</p:commandButton>
 

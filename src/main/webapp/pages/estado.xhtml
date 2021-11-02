@@ -49,9 +49,9 @@
 					<p:inputText style="width:185px"
 						value="#{estadoController.entity.pais.nome}" />
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-						actionListener="#{estadoController.abrirPaisListing}">
+						actionListener="#{estadoController.abrirPaisListing}" process="@this" >
 						<p:ajax event="dialogReturn"
-							listener="#{estadoController.obterPaisListing}"  update="@form" />
+							listener="#{estadoController.obterPaisListing}" process="@this" update="@form" />
 					</p:commandButton>
 				</div>
 			</h:panelGroup>
@@ -69,7 +69,7 @@
 
 			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
 				value="Pesquisar."
-				actionListener="#{estadoController.abrirEstadoListing}">
+				actionListener="#{estadoController.abrirEstadoListing}" process="@this">
 				<p:ajax event="dialogReturn"
 					listener="#{estadoController.obterEstadoListing}"
 					update="inputForm" />

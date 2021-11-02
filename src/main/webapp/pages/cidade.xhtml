@@ -45,7 +45,7 @@
 					<p:inputText style="width:185px"
 						value="#{cidadeController.entity.estado.nome}" />
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-						actionListener="#{cidadeController.abrirEstadoListing}">
+						actionListener="#{cidadeController.abrirEstadoListing}" process="@this">
 						<p:ajax event="dialogReturn"
 							listener="#{cidadeController.obterEstadoListing}" update="@form" />
 					</p:commandButton>
