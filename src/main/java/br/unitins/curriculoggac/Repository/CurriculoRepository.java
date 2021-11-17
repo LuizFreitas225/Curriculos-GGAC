@@ -7,7 +7,7 @@ import javax.persistence.Query;
 
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.model.Curriculo;
-import br.unitins.curriculoggac.model.Usuario;
+
 
 public class CurriculoRepository extends Repository<Curriculo> {
 	@SuppressWarnings("unchecked")
@@ -15,7 +15,7 @@ public class CurriculoRepository extends Repository<Curriculo> {
 		try {
 			EntityManager em = getEntityManager();
 			// JPQL ou SQL
-			Query query = em.createQuery("SELECT u FROM Curriculo u WHERE upper(u.descricao) ILIKE upper(:descricao)");
+			Query query = em.createQuery("SELECT u FROM Curriculo u WHERE upper(u.descricao) LIKE upper(:descricao)");
 			query.setParameter("descricao", "%" + descricao + "%");
 
 			return query.getResultList();

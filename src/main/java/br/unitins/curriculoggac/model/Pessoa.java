@@ -1,6 +1,8 @@
 package br.unitins.curriculoggac.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +20,8 @@ public class Pessoa {
 	private String nome;
 	@NotEmpty
 	private String sobreNome;
-	@NotEmpty
-	private String estadoCivil;
+	@Enumerated(EnumType.ORDINAL)
+	private EstadoCivil estadoCivil;
 	@NotNull
 	private Integer idade;
 	@NotEmpty
@@ -36,11 +38,11 @@ public class Pessoa {
 		this.sobreNome = sobreNome;
 	}
 
-	public String getEstadoCivil() {
+	public EstadoCivil getEstadoCivil() {
 		return estadoCivil;
 	}
 
-	public void setEstadoCivil(String estadoCivil) {
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
 
