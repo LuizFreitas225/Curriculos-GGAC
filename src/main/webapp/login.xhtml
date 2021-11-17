@@ -40,10 +40,13 @@
 
 		</div>
 		<div class="card" style="padding: 0px 0px 15px 0px;">
-			<p:link outcome="usuarioCadastro.xhtml"
-				value="Ainda não tenho cadastro. Quero me registrar.">
-
-			</p:link>
+			
+			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
+				value="Quero me registrar."
+				action="#{loginController.cadastro}"
+				 style="padding: 15px 0px 15px 0px;">
+				
+			</p:commandLink>
 		</div>
 
 		<div style="width: 3rem; text-align: center">
@@ -55,6 +58,8 @@
 				styleClass="ui-button-outlined ui-button-success">
 
 			</p:commandButton>
+			
+			
 
 
 		</div>

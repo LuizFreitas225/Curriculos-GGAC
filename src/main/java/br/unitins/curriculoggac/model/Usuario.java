@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
@@ -29,7 +30,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario")
 	private List<Curriculo> listCurriculo;
-
+	
+	private Perfil perfil;
+	
 	public Usuario() {
 		super();
 
@@ -40,6 +43,22 @@ public class Usuario {
 
 		this.email = email;
 		this.senha = senha;
+	}
+    
+	public List<Curriculo> getListCurriculo() {
+		return listCurriculo;
+	}
+
+	public void setListCurriculo(List<Curriculo> listCurriculo) {
+		this.listCurriculo = listCurriculo;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	public String getSobreNome() {

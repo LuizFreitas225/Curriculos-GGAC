@@ -20,7 +20,7 @@ public class Pessoa {
 	private String nome;
 	@NotEmpty
 	private String sobreNome;
-	@Enumerated(EnumType.ORDINAL)
+	
 	private EstadoCivil estadoCivil;
 	@NotNull
 	private Integer idade;

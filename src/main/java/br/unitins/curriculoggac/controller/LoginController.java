@@ -37,6 +37,10 @@ public class LoginController {
        
     	return null;
     }
+    
+    public String cadastro() {
+    	return "cadastrousuario.xhtml?faces-redirect=true";
+    }
     public UsuarioRepository getUsuarioRepository() {
 		if(usuarioRepository == null ) {
 			usuarioRepository = new UsuarioRepository();

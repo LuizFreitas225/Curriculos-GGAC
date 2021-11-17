@@ -10,7 +10,7 @@
 		<class>br.unitins.curriculoggac.converter.jpa.EstadoCivilConverter</class>
 		<class>br.unitins.curriculoggac.converter.jpa.TipoEnsinoConverter</class>
 		<class>br.unitins.curriculoggac.converter.jpa.StatusFormacaoConverter</class>
-		
+		<class>br.unitins.curriculoggac.converter.jpa.PerfilConverter</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"
