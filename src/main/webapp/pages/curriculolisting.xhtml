@@ -58,7 +58,9 @@
             </f:facet>
 
 			<p:column headerText="Id">
-				
+				<p:commandLink value="#{curriculo.id}"
+										actionListener="#{curriculoListing.select(entity.id)}"
+										process="@this" update="@form"/>
 			</p:column>
 
 			<p:column headerText="Descrição">
@@ -66,31 +68,6 @@
 										actionListener="#{curriculoListing.select(entity.id)}"
 										process="@this" update="@form"/>
 			</p:column>
-
-
-			<p:column style="width:3rem;text-align: center" headerText="Opções">
-
-
-				<p:commandButton type="button" icon="pi pi-eye" process="formMenu"
-					update="formMenu" action="menu.xhtml"
-					styleClass="rounded-button ui-button-help ui-button-flat">
-				</p:commandButton>
-
-
-			</p:column>
-			<p:column style="width:3rem;text-align: center">
-				<p:commandButton type="button" icon="pi pi-times"
-					process="formCurriculo" update="formCurriculo"
-					action="#{menuController.excluirCurriculo(curriculo.id)}"
-					styleClass="rounded-button ui-button-danger">
-					<p:confirm type="popup" header="Confirmation"
-						message="Deseja mesmo excluir esse currículo?"
-						icon="pi pi-info-circle" />
-				</p:commandButton>
-			</p:column>
-
-
-
 
 		</p:dataTable>
 						</div>

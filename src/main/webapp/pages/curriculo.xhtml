@@ -20,8 +20,8 @@
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
 
-		<h1>Criando um currículo...</h1>
-		<h2>Insira os dados pessoais que aparecerá no currículo:</h2>
+		<h1>Gerenciamento de Currículo</h1>
+		<h2>Informe os dados pessoais que aparecerá no currículo:</h2>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
@@ -30,51 +30,57 @@
 			<div class="p-field" style="padding: 0px 0px 10px 0px;">
 				<label for="firstname"> Primeiro Nome</label>
 				<p:inputText id="nome" placeholder="Exemplo: Luiz Felipe"
-					type="text" value="#{menuController.pessoa.nome}" />
+					type="text" value="#{curriculoController.pessoa.nome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Sobrenome</label>
 				<p:inputText id="sobrenome" placeholder="Exemplo: Da Silva..."
-					type="text" value="#{menuController.pessoa.sobreNome}" />
+					type="text" value="#{curriculoController.pessoa.sobreNome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Idade</label>
 				<p:inputText id="Idade" placeholder="Exemplo: 18" type="text"
-					value="#{menuController.pessoa.idade}" />
+					value="#{curriculoController.pessoa.idade}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Endereço</label>
 				<p:inputText id="endereco" placeholder="Estado ,Cidade e Bairro..."
-					type="text" value="#{menuController.pessoa.endereco}" />
+					type="text" value="#{curriculoController.pessoa.endereco}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Estado Civil</label>
-				<p:inputText id="estadoCivil" placeholder="Exemplo: Solteiro"
-					type="text" value="#{menuController.pessoa.estadoCivil}" />
+				<p:selectOneMenu value="#{curriculoController.pessoa.estadoCivil}">
+					<f:selectItem itemLabel="Selecione ..." />
+					<f:selectItems value="#{curriculoController.listEstadoCivil}"
+						var="obj" itemLabel="#{obj.label}" />
+				</p:selectOneMenu>
+
 			</div>
 
 
 
 		</div>
-		<div class="card" style="padding: 0px 0px 15px 0px;">
-			
-
-		</div>
+		<div class="card" style="padding: 0px 0px 15px 0px;"></div>
 
 		<div style="width: 3rem; text-align: center">
 
-			<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-				actionListener="#{menuController.abrirPaisListing}" process="@this">
-				<p:ajax event="dialogReturn" update="@form" />
-			</p:commandButton>
+			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
+				value="Pesquisar."
+				actionListener="#{curriculoController.abrirCurriculoListing}"
+				process="@this" style="padding: 15px 0px 15px 0px;">
+				<p:ajax event="dialogReturn"
+					listener="#{curriculoController.obterCurriculoListing}"
+					update="inputForm" />
+			</p:commandLink>
+
 
 			<p:commandButton update="inputForm mensagemValidacao "
 				value="Cadastrar" icon="pi pi-check" title="Cadastrar"
-				action="#{menuController.salvarCurriculo}"
+				action="#{curriculoController.salvarCurriculo}"
 				styleClass="ui-button-outlined ui-button-success">
 				<p:confirm type="popup" header="Confirmation"
 					message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
