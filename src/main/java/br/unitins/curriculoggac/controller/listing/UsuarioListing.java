@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+
 import br.unitins.curriculoggac.Repository.UsuarioRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.model.Usuario;
@@ -36,7 +38,17 @@ public class UsuarioListing extends Listing<Usuario> {
 		}
 
 	}
-
+	
+	public void select(String id) {
+		Usuario obj = null;
+		UsuarioRepository repo = new UsuarioRepository();
+		try {
+			obj = repo.findById(id);
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+		}
+		PrimeFaces.current().dialog().closeDynamic(obj);
+	}
 	public String getFiltro() {
 		return filtro;
 	}

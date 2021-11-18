@@ -47,7 +47,7 @@
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
 						actionListener="#{cidadeController.abrirEstadoListing}" process="@this">
 						<p:ajax event="dialogReturn"
-							listener="#{cidadeController.obterEstadoListing}" update="@form" />
+							listener="#{cidadeController.obterEstadoListing}" process="@this" update="@form"/>
 					</p:commandButton>
 				</div>
 			</h:panelGroup>

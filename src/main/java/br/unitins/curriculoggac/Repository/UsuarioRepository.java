@@ -16,7 +16,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 		try {
 			EntityManager em = getEntityManager();
 			// JPQL ou SQL
-			Query query = em.createQuery("SELECT u FROM Usuario u WHERE upper(u.primeiroNome) LIKE upper(:nome)");
+			Query query = em.createQuery("SELECT u FROM Usuario u WHERE upper(u.nome) LIKE upper(:nome)");
 			query.setParameter("nome", "%" + nome + "%");
 
 			return query.getResultList();

@@ -112,7 +112,7 @@
 
 				<p:commandButton value="Excluir"
 					actionListener="#{gerencimentoUsuarioController.excluir}" process="@form"
-					update="@form mensagemValidacao panelButtons "
+					update="@this mensagemValidacao panelButtons "
 					styleClass="ui-button-raised ui-button-danger ui-button-flat"
 					icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
 					rendered="#{gerencimentoUsuarioController.entity.email != null}">
