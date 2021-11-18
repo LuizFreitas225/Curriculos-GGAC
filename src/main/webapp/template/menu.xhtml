@@ -8,25 +8,43 @@
 <ui:composition>
 	<div class="card">
 		<h:form id="formMenu">
-			<p:growl id="messages" />
+			<h:messages id="mensagemValidacao" style="color:#555F5E;margin:8px;" />
 
 			<p:menubar>
+				<p:menuitem>
+					<img src="../images/logo3.png" alt="Minha Figura" style=""> </img>
+				</p:menuitem>
+				<p:menuitem>
 
+					<p:autoComplete id="acSimple" value="#{menuController.curriculo}"
+						var="obj" itemLabel="#{obj.descricao}" itemValue="#{obj}"
+						completeMethod="#{menuController.completeCurriculo}"
+						placeholder="Pesquisar Currículos" forceSelection="true"
+						minQueryLength="1" maxResults="3"
+						moreText="Existem mais estados ..." />
+
+					<p:commandButton  value="Ir"
+						action="#{menuController.gerenciarCurriculo}"
+						process="@this"
+						update=" @none " />
+
+				</p:menuitem>
 				<p:submenu label="Currículos" icon="pi pi-fw pi-file">
-                    <p:menuitem value="Visualizar" url="curriculo.xhtml"  icon="pi pi-eye"/>
+					<p:menuitem value="Visualizar" url="curriculo.xhtml"
+						icon="pi pi-eye" />
 					<p:menuitem value="Novo" url="curriculo.xhtml" icon="pi pi-plus" />
 				</p:submenu>
 
 
 
 				<p:submenu label="Usuário" icon="pi pi-fw pi-user">
-					
+
 				</p:submenu>
 
-				<p:submenu label="Endereço" icon="pi pi-map-marker" >
-					<p:menuitem value="Países" url="pais.xhtml"  icon="pi pi-map" />
-					<p:menuitem value="Estados" url="estado.xhtml"  icon="pi pi-map" />
-					<p:menuitem value="Cidades" url="cidade.xhtml"  icon="pi pi-map" />
+				<p:submenu label="Endereço" icon="pi pi-map-marker">
+					<p:menuitem value="Países" url="pais.xhtml" icon="pi pi-map" />
+					<p:menuitem value="Estados" url="estado.xhtml" icon="pi pi-map" />
+					<p:menuitem value="Cidades" url="cidade.xhtml" icon="pi pi-map" />
 				</p:submenu>
 
 
@@ -40,7 +58,8 @@
 				<f:facet name="options">
 
 					<p:button value="Novo" icon="pi pi-plus"
-						styleClass="ui-button-info" action="curriculo.xhtml" />
+						styleClass="ui-button-info"
+						action="../pages/curriculo.xhtml?faces-redirect=true" />
 
 
 

@@ -2,6 +2,8 @@ package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
 
+import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -28,6 +30,16 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 	PessoaRepository pessoaRepository;
 	private Pessoa pessoa;
 	private Usuario usuarioLogado;
+   
+	
+	
+	
+	public CurriculoController() {
+		super();
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		
+		setEntity((Curriculo) flash.get("curriculoMenu"));
+	}
 
 	public void salvarCurriculo() {
 
