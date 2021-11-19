@@ -50,8 +50,8 @@
 
 
 
-			<p:commandLink id="ajax" process="@this"
-				update="inputForm mensagemValidacao " value="Pesquisar."
+			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
+				process="@this" value="Pesquisar."
 				actionListener="#{paisController.abrirPaisListing}"
 				rendered="#{ ! paisController.paisRedirect  }">
 				<p:ajax event="dialogReturn"

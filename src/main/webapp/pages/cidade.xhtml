@@ -24,7 +24,7 @@
 
 		<h1>Gerenciaomento de Cidades</h1>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
-            <p:autoUpdate/>
+			<p:autoUpdate />
 		</p:messages>
 
 		<h:panelGrid columns="2">
@@ -34,7 +34,7 @@
 					value="#{cidadeController.entity.nome}" />
 			</div>
 
-			
+
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Estado</label>
 
@@ -45,9 +45,11 @@
 					<p:inputText style="width:185px"
 						value="#{cidadeController.entity.estado.nome}" />
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
-						actionListener="#{cidadeController.abrirEstadoListing}" process="@this">
+						actionListener="#{cidadeController.abrirEstadoListing}"
+						update="inputForm mensagemValidacao " process="@this">
 						<p:ajax event="dialogReturn"
-							listener="#{cidadeController.obterEstadoListing}" process="@this" update="@form"/>
+							listener="#{cidadeController.obterEstadoListing}" process="@this"
+							update="@form" />
 					</p:commandButton>
 				</div>
 			</h:panelGroup>
@@ -64,7 +66,7 @@
 
 
 			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
-				value="Pesquisar."
+				process="@this" value="Pesquisar."
 				actionListener="#{cidadeController.abrirCidadeListing}">
 				<p:ajax event="dialogReturn"
 					listener="#{cidadeController.obterCidadeListing}"
