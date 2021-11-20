@@ -11,6 +11,8 @@
 		<class>br.unitins.curriculoggac.converter.jpa.TipoEnsinoConverter</class>
 		<class>br.unitins.curriculoggac.converter.jpa.StatusFormacaoConverter</class>
 		<class>br.unitins.curriculoggac.converter.jpa.PerfilConverter</class>
+		<class>br.unitins.curriculoggac.model.DefaultEntity</class>
+		<class>br.unitins.curriculoggac.model.RecuperarSenha</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"
