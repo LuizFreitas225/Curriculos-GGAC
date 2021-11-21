@@ -10,7 +10,12 @@
 
 <h:body>
 
+    <div id="menu">
+		<ui:insert>
+			<ui:include src="../template/menu.xhtml"></ui:include>
+		</ui:insert>
 
+	</div>
 
 	<h:form id="inputForm"
 		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
@@ -35,10 +40,14 @@
 					value="#{gerencimentoUsuarioController.entity.sobreNome}" />
 			</div>
 
-			<div class="p-field" style="padding: 0px 0px 15px 0px;">
-				<label for="firstname">Email</label>
+			<div class="p-field" style="padding: 0px 0px 15px 0px;" >
+				<label for="firstname">Email: <br> </br></label>
 				<p:inputText id="email" type="text"
-					value="#{gerencimentoUsuarioController.entity.email}" />
+					value="#{gerencimentoUsuarioController.entity.email}"
+					rendered="#{gerencimentoUsuarioController.entity.email == null}" />
+					<h:outputLabel for="name" value="#{gerencimentoUsuarioController.entity.email}"
+					rendered="#{gerencimentoUsuarioController.entity.email != null}"
+					/>
 			</div>
               <div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Perfil</label>
@@ -83,7 +92,7 @@
 			<h:panelGrid columns="5" id="panelButtons">
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Cadastrar" icon="pi pi-save" title="Cadastrar"
-					action="#{gerencimentoUsuarioController.salvar}"
+					action="#{gerencimentoUsuarioController.salvarUsuario}"
 					styleClass="ui-button-raised ui-button-success ui-button-flat"
 					style="margin: 15px 0px 0px 0px;"
 					rendered="#{gerencimentoUsuarioController.entity.email == null}">
@@ -102,7 +111,7 @@
 
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Alterar" icon="pi pi-pencil" title="Alterar"
-					action="#{gerencimentoUsuarioController.salvar}"
+					action="#{gerencimentoUsuarioController.alterarUsuario}"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;"
 					rendered="#{gerencimentoUsuarioController.entity.email != null}">

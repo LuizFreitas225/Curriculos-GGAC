@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Meus Dados</title>
+</h:head>
+
+<h:body>
+
+	<div id="menu">
+		<ui:insert>
+			<ui:include src="../template/menu.xhtml"></ui:include>
+		</ui:insert>
+
+	</div>
+
+	<h:form id="inputForm"
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
+
+
+		<h1>Meus Dados</h1>
+		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		
+
+			<div class="ui-fluid">
+
+				<div class="p-field" style="padding: 0px 0px 10px 0px;">
+					<label for="firstname">Nome</label>
+					<p:inputText id="nome" type="text"
+						value="#{meusDadosController.entity.nome}" />
+				</div>
+
+				<div class="p-field" style="padding: 0px 0px 15px 0px;">
+					<label for="firstname">Sobrenome</label>
+					<p:inputText id="sobrenome" type="text"
+						value="#{meusDadosController.entity.sobreNome}" />
+				</div>
+
+				
+
+				<div class="p-field" style="padding: 0px 0px 15px 0px;">
+					<label for="firstname">Senha</label>
+					<p:password id="toggle" value="#{meusDadosController.entity.senha}"
+						toggleMask="true" redisplay="true" />
+				</div>
+
+				<div class="p-field" style="padding: 0px 0px 15px 0px;">
+					<label for="firstname">Confirmar Senha</label>
+					<p:password id="confirmtoggle"
+						value="#{meusDadosController.confirmarSenha}" toggleMask="true"
+						redisplay="true" />
+				</div>
+
+
+			</div>
+		<h:panelGrid id="panelButtons" columns="2">
+
+
+				<p:commandButton update="@form mensagemValidacao panelButtons "
+					value="Alterar" icon="pi pi-pencil" title="Alterar"
+					action="#{meusDadosController.alterarUsuario}"
+					styleClass="ui-button-raised ui-button-flat ui-button-plain"
+					style="margin: 15px 0px 0px 0px;">
+
+					<p:confirm type="popup" header="Confirmation"
+						message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
+				</p:commandButton>
+
+				<p:commandButton value="Excluir Conta"
+					actionListener="#{meusDadosController.excluirEncerrarSessao}"
+					process="@form" update="@this mensagemValidacao panelButtons "
+					styleClass="ui-button-raised ui-button-danger ui-button-flat"
+					icon="pi pi-times" style="margin: 15px 0px 0px 0px;">
+
+					<p:confirm type="popup" header="Confirmation"
+						message="Tem certeza que deseja excluir sua conta? Essa ação não poderá ser desfeita."
+						icon="pi pi-info-circle" />
+				</p:commandButton>
+
+				<p:confirmPopup global="true">
+					<p:commandButton value="Confirmar" type="button"
+						styleClass="ui-confirm-popup-yes" />
+					<p:commandButton value="Revisar" type="button"
+						styleClass="ui-confirm-popup-no ui-button-flat" />
+
+				</p:confirmPopup>
+
+		</h:panelGrid>
+
+	</h:form>
+
+
+
+</h:body>
+
+</html>

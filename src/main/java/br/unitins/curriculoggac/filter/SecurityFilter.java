@@ -49,7 +49,7 @@ public class SecurityFilter implements Filter {
 					chain.doFilter(request, response);
 					return;
 				} else 
-					((HttpServletResponse) response).sendRedirect("/CurriculoGGP/faces/cadastrousuario.xhtml");
+					((HttpServletResponse) response).sendRedirect("/CurriculoGGP/faces/sempermissao.xhtml");
 			}
 		
 	}

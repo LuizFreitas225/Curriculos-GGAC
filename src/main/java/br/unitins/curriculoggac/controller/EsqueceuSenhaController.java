@@ -43,7 +43,6 @@ public class EsqueceuSenhaController extends Controller<RecuperarSenha> implemen
 		DecimalFormat format = new DecimalFormat("T-000000");
 		String codigo = format.format(r.nextInt(1000000));
 
-		
 		getEntity().setCodigo(codigo);
 		getEntity().setUsuario(usuario);
 		getEntity().setUtilizado(false);
@@ -63,31 +62,33 @@ public class EsqueceuSenhaController extends Controller<RecuperarSenha> implemen
 		}
 
 	}
-    public void alterarSenha() throws RepositoryException {
-    	if(getSenha().equals(getConfirmarSenha() )) {
-    		if(validarCodigo()) {
-    		if( getEntity().getUsuario() != null ) {
-    			getEntity().getUsuario().setSenha(senha);
-    			UsuarioRepository repo = new UsuarioRepository();
-    			try {
-    				repo.save(getEntity().getUsuario());
-    				Util.addInfoMessage("Senha alterada com sucesso.");
-    				getEntity().setUtilizado(true);
-    			}catch(RepositoryException e) {
-    				e.printStackTrace();
-    				Util.addErrorMessage("Erro ao alterar o senha.");
-    			}
-    			
-    		}else {
-    			Util.addErrorMessage("Erro ao encontrar o usuário.");
-    		}
-    	}else {
-    		Util.addErrorMessage("A revalidação recusou o código.");
-    	}
-    	}else {
-    		Util.addErrorMessage("As senhas devem ser iguais.");
-    	}
-    }
+
+	public void alterarSenha() throws RepositoryException {
+		if (getSenha().equals(getConfirmarSenha())) {
+			if (validarCodigo()) {
+				if (getEntity().getUsuario() != null) {
+					getEntity().getUsuario().setSenha(senha);
+					UsuarioRepository repo = new UsuarioRepository();
+					try {
+						repo.save(getEntity().getUsuario());
+						Util.addInfoMessage("Senha alterada com sucesso.");
+						getEntity().setUtilizado(true);
+					} catch (RepositoryException e) {
+						e.printStackTrace();
+						Util.addErrorMessage("Erro ao alterar o senha.");
+					}
+
+				} else {
+					Util.addErrorMessage("Erro ao encontrar o usuário.");
+				}
+			} else {
+				Util.addErrorMessage("A revalidação recusou o código.");
+			}
+		} else {
+			Util.addErrorMessage("As senhas devem ser iguais.");
+		}
+	}
+
 	public Boolean validarCodigo() {
 		if (getEntity().getId() != null) {
 			if (getEntity().getDataLimite().isAfter(LocalDateTime.now()) && getEntity().getUtilizado() == false) {
@@ -140,7 +141,7 @@ public class EsqueceuSenhaController extends Controller<RecuperarSenha> implemen
 
 	@Override
 	public RecuperarSenha getEntity() {
-		if(entity == null)
+		if (entity == null)
 			entity = new RecuperarSenha();
 		return entity;
 	}

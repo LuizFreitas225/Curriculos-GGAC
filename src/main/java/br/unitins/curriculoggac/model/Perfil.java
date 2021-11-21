@@ -19,6 +19,7 @@ public enum Perfil {
 		// acesso para todos os usuarios
 		paginasComPermissao.add("/CurriculoGGP/faces/login.xhtml");
 		paginasComPermissao.add("/CurriculoGGP/faces/cadastrousuario.xhtml");
+		paginasComPermissao.add("/CurriculoGGP/faces/sempermissao.xhtml");
 		
 		
 		
@@ -41,6 +42,7 @@ public enum Perfil {
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/pais.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/paislisting.xhtml");
 			
+			paginasComPermissao.add("/CurriculoGGP/faces/pages/meusdados.xhtml");
 			
 		} else if (id.equals(2)) { // Usuario
 		
@@ -57,6 +59,8 @@ public enum Perfil {
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/pais.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/paislisting.xhtml");
+			
+			paginasComPermissao.add("/CurriculoGGP/faces/pages/meusdados.xhtml");
 		}
 	}
 	

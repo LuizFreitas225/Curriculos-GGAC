@@ -23,9 +23,8 @@
 						minQueryLength="1" maxResults="3"
 						moreText="Existem mais estados ..." />
 
-					<p:commandButton  value="Ir"
-						action="#{menuController.gerenciarCurriculo}"
-						process="@this"
+					<p:commandButton value="Ir"
+						action="#{menuController.gerenciarCurriculo}" process="@this"
 						update=" @none " />
 
 				</p:menuitem>
@@ -38,10 +37,16 @@
 
 
 				<p:submenu label="Usuário" icon="pi pi-fw pi-user">
+					<p:menuitem value="Meus Dados" url="meusdados.xhtml"
+						icon="pi pi-user-edit" />
+					<p:menuitem value="Gerenciar Usuários"
+						url="gerenciamentousuario.xhtml" icon="pi pi-users" 
+						rendered="#{menuController.usuarioLogado.perfil.id == 1}"/>
 
 				</p:submenu>
 
-				<p:submenu label="Endereço" icon="pi pi-map-marker">
+				<p:submenu label="Endereço" icon="pi pi-map-marker"
+				rendered="#{menuController.usuarioLogado.perfil.id == 1}">
 					<p:menuitem value="Países" url="pais.xhtml" icon="pi pi-map" />
 					<p:menuitem value="Estados" url="estado.xhtml" icon="pi pi-map" />
 					<p:menuitem value="Cidades" url="cidade.xhtml" icon="pi pi-map" />
@@ -57,9 +62,21 @@
 
 				<f:facet name="options">
 
-					<p:button value="Novo" icon="pi pi-plus"
-						styleClass="ui-button-info"
-						action="../pages/curriculo.xhtml?faces-redirect=true" />
+
+
+					<p:menuitem>
+						<p:button value="Novo" icon="pi pi-plus"
+							styleClass="ui-button-info"
+							action="../pages/curriculo.xhtml?faces-redirect=true" />
+
+					</p:menuitem>
+					<p:menuitem>
+						<img src="../images/logo3.png" alt="Minha Figura" style="">
+						</img>
+					</p:menuitem>
+					<p:menuitem>
+						<label> #{menuController.usuarioLogado.nome}</label>
+					</p:menuitem>
 
 
 
