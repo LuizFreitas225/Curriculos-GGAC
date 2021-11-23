@@ -1,21 +1,22 @@
-
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Visualizar Currículos</title>
+</h:head>
 
-	<h:head>
+<h:body>
 
-	</h:head>
-	<h:head>
-		<title>Consulta de Currículo</title>
-	</h:head>
+	<h:panelGroup id="menu" layout="block">
+		<ui:insert>
+			<ui:include src="../template/menu.xhtml"></ui:include>
+		</ui:insert>
+	</h:panelGroup>
 
-	<h:body>
-
-		<p:ajaxStatus onstart="PF('statusDialog').show()"
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
 			onsuccess="PF('statusDialog').hide()" />
 
 		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
@@ -32,10 +33,10 @@
 							<div class="ui-g-12">
 								<div class="card card-w-title">
 									<div class="ui-inputgroup">
-										<p:inputText id="itFiltro" value="#{curriculoListing.filtro}"
+										<p:inputText id="itFiltro" value="#{ consultaCurriculoController.filtro}"
 											placeholder="Informe o nome do curriculo..." />
 										<p:commandButton value="Pesquisar"
-											actionListener="#{curriculoListing.pesquisar}"
+											actionListener="#{consultaCurriculoController.pesquisar}"
 											process="@this itFiltro" update="dtCurriculo" />
 									</div>
 								</div>
@@ -50,7 +51,7 @@
 						<div class="card card-w-title">
 
 							<p:dataTable id="dtCurriculo" var="curriculo"
-								value="#{curriculoListing.list}" rowIndexVar="row"
+								value="#{consultaCurriculoController.list}" rowIndexVar="row"
 								paginator="false" reflow="true">
 								<f:facet name="header">
                 Lista de Currículos
@@ -58,13 +59,13 @@
 
 								<p:column headerText="Id">
 									<p:commandLink value="#{curriculo.id}"
-										actionListener="#{curriculoListing.select(curriculo.id)}"
+										actionListener="#{consultaCurriculoController.select(curriculo.id)}"
 										process="@this" update="@form" />
 								</p:column>
 
 								<p:column headerText="Descrição">
 									<p:commandLink value="#{curriculo.descricao}"
-										actionListener="#{curriculoListing.select(curriculo.id)}"
+										actionListener="#{consultaCurriculoController.select(curriculo.id)}"
 										process="@this" update="@form" />
 								</p:column>
 
@@ -75,6 +76,5 @@
 			</p:panel>
 
 		</h:form>
-	</h:body>
-
+</h:body>
 </html>

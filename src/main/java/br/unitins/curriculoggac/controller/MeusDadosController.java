@@ -1,3 +1,4 @@
+package br.unitins.curriculoggac.controller;
 import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
@@ -9,7 +10,7 @@ import br.unitins.curriculoggac.Repository.UsuarioRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Session;
 import br.unitins.curriculoggac.application.Util;
-import br.unitins.curriculoggac.controller.Controller;
+
 import br.unitins.curriculoggac.controller.listing.UsuarioListing;
 import br.unitins.curriculoggac.model.Perfil;
 import br.unitins.curriculoggac.model.Usuario;

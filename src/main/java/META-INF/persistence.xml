@@ -13,6 +13,11 @@
 		<class>br.unitins.curriculoggac.converter.jpa.PerfilConverter</class>
 		<class>br.unitins.curriculoggac.model.DefaultEntity</class>
 		<class>br.unitins.curriculoggac.model.RecuperarSenha</class>
+		<class>br.unitins.curriculoggac.model.EnderecoWeb</class>
+		<class>br.unitins.curriculoggac.model.InformacaoAdicional</class>
+		<class>br.unitins.curriculoggac.model.ExperienciaProfissional</class>
+		<class>br.unitins.curriculoggac.model.Formacao</class>
+		 
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"

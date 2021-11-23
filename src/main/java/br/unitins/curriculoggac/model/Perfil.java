@@ -28,13 +28,15 @@ public enum Perfil {
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/gerenciamentousuario.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/usuariolisting.xhtml");
 			
-			
-			
+			paginasComPermissao.add("/CurriculoGGP/faces/pages/paginaconsultacurriculo.xhtml");
+			paginasComPermissao.add("/CurriculoGGP/faces/pages/visualizacaocurriculo.xhtml");
+		
+	
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidade.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidadelisting.xhtml");
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/curriculo.xhtml");
-			paginasComPermissao.add("/CurriculoGGP/faces/pages/curriculoListing.xhtml");
+			paginasComPermissao.add("/CurriculoGGP/faces/pages/curriculolisting.xhtml");
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/estado.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/estadolisting.xhtml");
@@ -47,6 +49,8 @@ public enum Perfil {
 		} else if (id.equals(2)) { // Usuario
 		
 			
+			//paginasComPermissao.add("/CurriculoGGP/faces/pages/paginaconsultacurriculo.xhtml");
+			//paginasComPermissao.add("/CurriculoGGP/faces/pages/visualizacaocurriculo.xhtml");
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidade.xhtml");
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidadelisting.xhtml");
