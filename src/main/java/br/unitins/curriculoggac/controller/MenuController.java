@@ -42,7 +42,6 @@ public class MenuController {
 	public void gerenciarCurriculo() {
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.put("curriculoMenu", getCurriculo());
-		
 		Util.redirect("../pages/curriculo.xhtml");
 
 	}

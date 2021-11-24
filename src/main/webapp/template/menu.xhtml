@@ -21,11 +21,11 @@
 						completeMethod="#{menuController.completeCurriculo}"
 						placeholder="Pesquisar Currículos" forceSelection="true"
 						minQueryLength="1" maxResults="3"
-						moreText="Existem mais estados ..." />
+						moreText="Existem mais currículos ..." />
 
 					<p:commandButton value="Ir"
-						action="#{menuController.gerenciarCurriculo}" process="@this"
-						update=" @none " />
+						action="#{menuController.gerenciarCurriculo}" process="@this acSimple"
+						update="acSimple " />
 
 				</p:menuitem>
 				<p:submenu label="Currículos" icon="pi pi-fw pi-file">

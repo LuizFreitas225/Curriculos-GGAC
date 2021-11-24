@@ -33,7 +33,7 @@ public class MeusDadosController extends Controller<Usuario> implements Serializ
 			try {
 				
 				// TODOS OS CADASTROS DESSE CONTRROLER SERÃO DE USUÁRIOS
-				entity.setPerfil(Perfil.USUARIO);
+				
 				getUsuarioRepository().save(entity);
 				Util.addInfoMessage("Alteração realizada com sucesso.");
 			} catch (RepositoryException e) {

@@ -25,30 +25,31 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 	String confirmarSenha = "";
 	UsuarioRepository usuarioRepository;
 
-	public String salvarUsuario() {
+	public void salvarUsuario() {
 
 		if (getConfirmarSenha().equals(entity.getSenha())) {
 			try {
 				Usuario aux = getUsuarioRepository().findById(entity.getEmail());
-				if (!(aux == null)) {
+				if (aux != null) {
 					Util.addErrorMessage("Email já está em uso.");
-					return null;
+					
 				}
 				
 				getUsuarioRepository().save(entity);
+				Util.addInfoMessage("Registro Realizado com Sucesso.");
 			} catch (RepositoryException e) {
 				Util.addErrorMessage("Problema ao salvar, tente novamente ou entre em contato com a TI.");
-				return null;
+				
 			}
 		} else {
 
 			Util.addErrorMessage("Verifique a confirmação de senha e tente novamente.");
-			return null;
+			
 		}
 
 		limpar();
 		setConfirmarSenha("");
-		return "login.xhtml?faces-redirect=true";
+		
 	}
 
 	public String alterarUsuario() {

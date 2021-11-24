@@ -22,10 +22,11 @@ import br.unitins.curriculoggac.model.Usuario;
 @Named
 @ViewScoped
 public class CurriculoController extends Controller<Curriculo> implements Serializable {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6480735934135149007L;
+	private static final long serialVersionUID = 2039799241810106170L;
 	CurriculoRepository curriculoRepository;
 	PessoaRepository pessoaRepository;
 	private Pessoa pessoa;
@@ -37,15 +38,16 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 	public CurriculoController() {
 		super();
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		
-		setEntity((Curriculo) flash.get("curriculoMenu"));
+		Curriculo curriculo = (Curriculo) flash.get("curriculoMenu");
+		if(curriculo == null)
+		setEntity(curriculo);
 	}
 
 	public void salvarCurriculo() {
 
 		getEntity().setUsuario(getUsuarioLogado());
-		getEntity().setPessoa(getPessoa());
-		getEntity().setDescricao("Currículo do(a) " + getPessoa().getNome());
+		//getEntity().setPessoa(getPessoa());
+		getEntity().setDescricao("Currículo do(a) " + getEntity().getPessoa().getNome());
 		salvar();
 	}
 
@@ -92,6 +94,7 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
     
 	public void obterCurriculoListing(SelectEvent<Curriculo> event) {
 		setEntity(event.getObject());
+		System.out.println(entity);
 	}
 	public Pessoa getPessoa() {
 

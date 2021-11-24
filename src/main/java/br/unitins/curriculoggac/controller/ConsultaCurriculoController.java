@@ -13,8 +13,10 @@ import javax.inject.Named;
 
 import br.unitins.curriculoggac.Repository.CurriculoRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
+import br.unitins.curriculoggac.application.Session;
 import br.unitins.curriculoggac.application.Util;
 import br.unitins.curriculoggac.model.Curriculo;
+import br.unitins.curriculoggac.model.Usuario;
 @Named
 @ViewScoped
 public class ConsultaCurriculoController implements Serializable {
@@ -29,7 +31,7 @@ public class ConsultaCurriculoController implements Serializable {
 	public void pesquisar() {
 		CurriculoRepository repo = new CurriculoRepository();
 		try {
-			setList(repo.findByDescricao(filtro));
+			setList(repo.findByDescricao(filtro,20, getUsuarioLogado()));
 		} catch (RepositoryException e) {
 			setList(new ArrayList<Curriculo>());
 		}
@@ -61,4 +63,12 @@ public class ConsultaCurriculoController implements Serializable {
 	public void setList(List<Curriculo> list) {
 		this.list = list;
 	}
+	public Usuario getUsuarioLogado() {
+		// obtendo o usuario da sessao
+		
+		Usuario usuarioLogado = (Usuario) Session.getInstance().get("usuarioLogado");
+		
+		return usuarioLogado;
+	}
+
 }
