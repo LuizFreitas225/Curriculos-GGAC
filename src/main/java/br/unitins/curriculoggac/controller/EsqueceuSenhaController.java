@@ -36,6 +36,7 @@ public class EsqueceuSenhaController extends Controller<RecuperarSenha> implemen
 			usuario = (Usuario) repo.findById(email);
 		} catch (RepositoryException e) {
 			Util.addErrorMessage("Email não encontrado.");
+			e.printStackTrace();
 			return;
 		}
 		// gerando codigo aleatorio

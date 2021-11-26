@@ -24,8 +24,8 @@
 						moreText="Existem mais currículos ..." />
 
 					<p:commandButton value="Ir"
-						action="#{menuController.gerenciarCurriculo}" process="@this acSimple"
-						update="acSimple " />
+						action="#{menuController.gerenciarCurriculo}"
+						process="@this acSimple" update="acSimple " />
 
 				</p:menuitem>
 				<p:submenu label="Currículos" icon="pi pi-fw pi-file">
@@ -40,13 +40,13 @@
 					<p:menuitem value="Meus Dados" url="meusdados.xhtml"
 						icon="pi pi-user-edit" />
 					<p:menuitem value="Gerenciar Usuários"
-						url="gerenciamentousuario.xhtml" icon="pi pi-users" 
-						rendered="#{menuController.usuarioLogado.perfil.id == 1}"/>
+						url="gerenciamentousuario.xhtml" icon="pi pi-users"
+						rendered="#{menuController.usuarioLogado.perfil.id == 1}" />
 
 				</p:submenu>
 
 				<p:submenu label="Endereço" icon="pi pi-map-marker"
-				rendered="#{menuController.usuarioLogado.perfil.id == 1}">
+					rendered="#{menuController.usuarioLogado.perfil.id == 1}">
 					<p:menuitem value="Países" url="pais.xhtml" icon="pi pi-map" />
 					<p:menuitem value="Estados" url="estado.xhtml" icon="pi pi-map" />
 					<p:menuitem value="Cidades" url="cidade.xhtml" icon="pi pi-map" />
@@ -64,20 +64,13 @@
 
 
 
-					<p:menuitem>
-						<p:button value="Novo" icon="pi pi-plus"
-							styleClass="ui-button-info"
-							action="../pages/curriculo.xhtml?faces-redirect=true" />
 
-					</p:menuitem>
 					<p:menuitem>
-						<img src="../images/logo3.png" alt="Minha Figura" style="">
-						</img>
+						<a href="../pages/meusdados.xhtml" > <img style="border-radius: 50%"
+							src="/CurriculoGGP/faces/pages/img-usuario?nome=#{menuController.usuarioLogado.email}.png"
+							width="40" height="45"> </img>
+						</a>
 					</p:menuitem>
-					<p:menuitem>
-						<label> #{menuController.usuarioLogado.nome}</label>
-					</p:menuitem>
-
 
 
 

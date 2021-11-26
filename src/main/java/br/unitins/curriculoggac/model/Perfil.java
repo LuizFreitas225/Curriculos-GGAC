@@ -21,6 +21,10 @@ public enum Perfil {
 		paginasComPermissao.add("/CurriculoGGP/faces/cadastrousuario.xhtml");
 		paginasComPermissao.add("/CurriculoGGP/faces/sempermissao.xhtml");
 		
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/img-usuario");
+		
+		
+		
 		
 		
 		if (id.equals(1)) { // ADM

@@ -41,21 +41,30 @@
 				<p:inputText id="sobrenome" type="text"
 					value="#{meusDadosController.entity.sobreNome}" />
 			</div>
+			
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Email <br> </br></label>
 				<h:outputLabel for="name"
 					value="#{meusDadosController.entity.email}" />
 			</div>
+			
 
+				<p:fileUpload id="fileUpload"
+					listener="#{meusDadosController.upload}" mode="advanced"
+					update="fileUpload @form" label="Selecione uma foto ..."
+					global="false">
+				</p:fileUpload>
+				<p:growl id="messages" showDetail="true" />
+			
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Senha</label>
-				<p:password id="toggle" value="#{meusDadosController.entity.senha}"
+				<p:password id="toggle"  value="#{meusDadosController.senha}"
 					toggleMask="true" redisplay="true" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
-				<label for="firstname">Confirmar Senha</label>
+				<label for="firstname" >Confirmar Senha</label>
 				<p:password id="confirmtoggle"
 					value="#{meusDadosController.confirmarSenha}" toggleMask="true"
 					redisplay="true" />
@@ -63,6 +72,8 @@
 
 
 		</div>
+
+
 		<h:panelGrid id="panelButtons" columns="2">
 
 

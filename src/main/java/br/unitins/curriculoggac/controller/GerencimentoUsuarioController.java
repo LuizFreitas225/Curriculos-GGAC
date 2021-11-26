@@ -1,11 +1,14 @@
 package br.unitins.curriculoggac.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.file.UploadedFile;
 
 import br.unitins.curriculoggac.Repository.UsuarioRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
@@ -117,4 +120,6 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 	public Perfil[] getListPerfil(){
 		return Perfil.values();
 	}
+	
+	
 }
