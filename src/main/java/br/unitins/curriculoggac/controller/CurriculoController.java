@@ -12,11 +12,13 @@ import org.primefaces.event.SelectEvent;
 import br.unitins.curriculoggac.Repository.CurriculoRepository;
 import br.unitins.curriculoggac.Repository.PessoaRepository;
 import br.unitins.curriculoggac.application.Session;
+import br.unitins.curriculoggac.controller.listing.CidadeListing;
 import br.unitins.curriculoggac.controller.listing.CurriculoListing;
 import br.unitins.curriculoggac.model.Curriculo;
 import br.unitins.curriculoggac.model.EstadoCivil;
 import br.unitins.curriculoggac.model.Pessoa;
 import br.unitins.curriculoggac.model.Usuario;
+import br.unitins.curriculoggac.model.endereco.Cidade;
 
 
 @Named
@@ -29,7 +31,6 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 	private static final long serialVersionUID = 2039799241810106170L;
 	CurriculoRepository curriculoRepository;
 	PessoaRepository pessoaRepository;
-	private Pessoa pessoa;
 	private Usuario usuarioLogado;
    
 	
@@ -38,15 +39,15 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 	public CurriculoController() {
 		super();
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		Curriculo curriculo = (Curriculo) flash.get("curriculoMenu");
-		if(curriculo == null)
+		Curriculo curriculo = (Curriculo) flash.get("curriculoMenu"); 
+		if(curriculo != null)
 		setEntity(curriculo);
 	}
 
 	public void salvarCurriculo() {
 
 		getEntity().setUsuario(getUsuarioLogado());
-		//getEntity().setPessoa(getPessoa());
+
 		getEntity().setDescricao("Currículo do(a) " + getEntity().getPessoa().getNome());
 		salvar();
 	}
@@ -96,22 +97,24 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 		setEntity(event.getObject());
 		System.out.println(entity);
 	}
-	public Pessoa getPessoa() {
-
-		if (pessoa == null) {
-			pessoa = new Pessoa();
-		}
-		return pessoa;
+	
+	public void obterCidadeListing(SelectEvent<Cidade> event) {
+		getEntity().getPessoa().setEndereco(event.getObject());;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void abrirCidadeListing() {
+		CidadeListing listing = new CidadeListing();
+		listing.open();
+
 	}
+	
 
 	@Override
 	public Curriculo getEntity() {
 		if (entity == null) {
 			entity = new Curriculo();
+			entity.setPessoa(new Pessoa());
+			entity.getPessoa().setEndereco(new Cidade());
 		}
 		return entity;
 	}

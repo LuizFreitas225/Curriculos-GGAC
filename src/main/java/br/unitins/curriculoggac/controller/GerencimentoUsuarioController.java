@@ -26,6 +26,7 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 
 	private static final long serialVersionUID = -5242237200720059655L;
 	String confirmarSenha = "";
+	String senha = "";
 	UsuarioRepository usuarioRepository;
 
 	public void salvarUsuario() {
@@ -35,32 +36,37 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 				Usuario aux = getUsuarioRepository().findById(entity.getEmail());
 				if (aux != null) {
 					Util.addErrorMessage("Email já está em uso.");
-					
+
 				}
-				
+				if (getConfirmarSenha().isEmpty() || getSenha().isEmpty()) {
+
+					String hash = Util.hash(entity.getEmail() + entity.getSenha());
+					entity.setSenha(hash);
+					entity.setSenha(getSenha());
+
+				}
 				getUsuarioRepository().save(entity);
 				Util.addInfoMessage("Registro Realizado com Sucesso.");
 			} catch (RepositoryException e) {
 				Util.addErrorMessage("Problema ao salvar, tente novamente ou entre em contato com a TI.");
-				
+
 			}
 		} else {
 
 			Util.addErrorMessage("Verifique a confirmação de senha e tente novamente.");
-			
+
 		}
 
 		limpar();
 		setConfirmarSenha("");
-		
+
 	}
 
 	public String alterarUsuario() {
 
 		if (getConfirmarSenha().equals(entity.getSenha())) {
 			try {
-				
-				
+
 				getUsuarioRepository().save(entity);
 				Util.addInfoMessage("Alteração realizada com sucesso.");
 			} catch (RepositoryException e) {
@@ -78,7 +84,6 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 		return "login.xhtml?faces-redirect=true";
 	}
 
-	
 	@Override
 	public Usuario getEntity() {
 		if (entity == null) {
@@ -96,6 +101,14 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 
 	public void obterUsuarioListing(SelectEvent<Usuario> event) {
 		setEntity(event.getObject());
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public UsuarioRepository getUsuarioRepository() {
@@ -116,10 +129,9 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 	public void setConfirmarSenha(String confirmarSenha) {
 		this.confirmarSenha = confirmarSenha;
 	}
-	
-	public Perfil[] getListPerfil(){
+
+	public Perfil[] getListPerfil() {
 		return Perfil.values();
 	}
-	
-	
+
 }

@@ -87,8 +87,7 @@ public class UsuarioRepository extends Repository<Usuario> {
 	@Override
 	public Usuario save(Usuario entity) throws RepositoryException {
 		try {
-			String hash = Util.hash(entity.getEmail() + entity.getSenha());
-			entity.setSenha(hash);
+			
 			getEntityManager().getTransaction().begin();
 			Usuario e = getEntityManager().merge(entity);
 			getEntityManager().getTransaction().commit();

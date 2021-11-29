@@ -1,14 +1,15 @@
 package br.unitins.curriculoggac.model;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import br.unitins.curriculoggac.model.endereco.Cidade;
 
 @Entity
 public class Pessoa {
@@ -24,8 +25,9 @@ public class Pessoa {
 	private EstadoCivil estadoCivil;
 	@NotNull
 	private Integer idade;
-	@NotEmpty
-	private String endereco;
+	@NotNull
+	@ManyToOne
+	private Cidade endereco;
 
 	@OneToOne(mappedBy = "pessoa")
 	private Curriculo curriculo;
@@ -78,11 +80,11 @@ public class Pessoa {
 		this.idade = idade;
 	}
 
-	public String getEndereco() {
+	public Cidade getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco( Cidade endereco) {
 		this.endereco = endereco;
 	}
 

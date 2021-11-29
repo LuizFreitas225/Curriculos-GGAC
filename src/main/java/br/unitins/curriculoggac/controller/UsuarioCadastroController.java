@@ -34,6 +34,8 @@ public class UsuarioCadastroController extends Controller <Usuario> implements S
 				}
 				//TODOS OS CADASTROS DESSE CONTRROLER SERÃO DE USUÁRIOS
 				entity.setPerfil(Perfil.USUARIO);
+				String hash = Util.hash(entity.getEmail() + entity.getSenha());
+				entity.setSenha(hash);
 				usuarioRepository.save(entity);
 			} catch (RepositoryException e) {
 				Util.addErrorMessage("Problema ao salvar, tente novamente ou entre em contato com a TI.");

@@ -28,8 +28,8 @@
 						<div class="ui-g-12">
 							<div class="card card-w-title">
 								<div class="ui-inputgroup">
-									<p:inputText id="itFiltro" value="#{paisListing.filtro}"
-										placeholder="Informe o nome do Estado..." />
+									<p:inputText id="itFiltro" value="#{cidadeListing.filtro}"
+										placeholder="Informe o nome da Cidade..." />
 									<p:commandButton value="Pesquisar"
 										actionListener="#{cidadeListing.pesquisar}"
 										process="@this itFiltro" update="dtListagem" />
@@ -46,7 +46,7 @@
 					<div class="card card-w-title">
 
 						<p:dataTable id="dtListagem" var="entity" rowIndexVar="row"
-							paginator="false" reflow="true" value="#{estadoListing.list}">
+							paginator="false" reflow="true" value="#{cidadeListing.list}">
 							<p:column headerText="N."
 								style="width: 30px; text-align: center;">
 								<h:outputText value="#{row + 1}" />
@@ -63,7 +63,7 @@
 									actionListener="#{cidadeListing.select(entity.id)}"
 									process="@this" update="@form" />
 							</p:column>
-							<p:column headerText="Estado">
+							<p:column headerText="País">
 								<p:commandLink value="#{entity.estado.pais.nome}"
 									actionListener="#{cidadeListing.select(entity.id)}"
 									process="@this" update="@form" />

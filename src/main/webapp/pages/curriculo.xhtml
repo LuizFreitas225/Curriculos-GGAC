@@ -29,31 +29,44 @@
 		<div class="ui-fluid">
 			<div class="p-field" style="padding: 0px 0px 10px 0px;">
 				<label for="firstname"> Primeiro Nome</label>
-				<p:inputText id="nome" placeholder="Exemplo: Luiz Felipe"
+				<p:inputText id="nome" 
 					type="text" value="#{curriculoController.entity.pessoa.nome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Sobrenome</label>
-				<p:inputText id="sobrenome" placeholder="Exemplo: Da Silva..."
+				<p:inputText id="sobrenome" 
 					type="text" value="#{curriculoController.entity.pessoa.sobreNome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Idade</label>
-				<p:inputText id="Idade" placeholder="Exemplo: 18" type="text"
+				<p:inputText id="Idade"  type="text"
 					value="#{curriculoController.entity.pessoa.idade}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Endereço</label>
-				<p:inputText id="endereco" placeholder="Estado ,Cidade e Bairro..."
-					type="text" value="#{curriculoController.entity.pessoa.endereco}" />
+
 			</div>
+			<h:panelGroup id="endereco">
+
+				<div class="ui-inputgroup">
+					<p:inputText style="width:185px"
+						value="#{curriculoController.entity.pessoa.endereco.nome}" />
+					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
+						actionListener="#{curriculoController.abrirCidadeListing}"
+						update="inputForm mensagemValidacao " process="@this">
+						<p:ajax event="dialogReturn"
+							listener="#{curriculoController.obterCidadeListing}" process="@this"
+							update="@form:endereco" />
+					</p:commandButton>
+				</div>
+			</h:panelGroup>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Estado Civil</label>
-				<p:selectOneMenu value="#{curriculoController.pessoa.estadoCivil}">
+				<p:selectOneMenu value="#{curriculoController.entity.pessoa.estadoCivil}">
 					<f:selectItem itemLabel="Selecione ..." />
 					<f:selectItems value="#{curriculoController.listEstadoCivil}"
 						var="obj" itemLabel="#{obj.label}" />

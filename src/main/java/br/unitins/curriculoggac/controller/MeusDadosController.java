@@ -41,10 +41,13 @@ public class MeusDadosController extends Controller<Usuario> implements Serializ
 			try {
 
 				if( getConfirmarSenha().isEmpty() || getSenha().isEmpty()) {
-					Util.addErrorMessage("Os campos de senha são obrigatórios.");
-					return null;
+					
+					String hash = Util.hash(entity.getEmail() + entity.getSenha());
+					entity.setSenha(hash);
+					 entity.setSenha(getSenha());
+					
 				}
-				 entity.setSenha(getSenha());
+				
 				getUsuarioRepository().save(entity);
 
 				if (getFotoInputStream() != null) {
