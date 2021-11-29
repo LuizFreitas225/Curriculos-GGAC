@@ -9,12 +9,9 @@ import br.unitins.curriculoggac.Repository.endereco.CidadeRepository;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.model.endereco.Cidade;
 
-
 @Named
 @ViewScoped
 public class CidadeListing extends Listing<Cidade> {
-
-	
 
 	/**
 	 * 
@@ -24,6 +21,7 @@ public class CidadeListing extends Listing<Cidade> {
 
 	public CidadeListing() {
 		super("cidadelisting", new CidadeRepository());
+		pesquisar();
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import br.unitins.curriculoggac.Repository.endereco.EstadoRepository;
 
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.model.endereco.Estado;
+
 @Named
 @ViewScoped
 public class EstadoListing extends Listing<Estado> {
@@ -19,6 +20,7 @@ public class EstadoListing extends Listing<Estado> {
 
 	public EstadoListing() {
 		super("estadolisting", new EstadoRepository());
+		pesquisar();
 	}
 
 	@Override

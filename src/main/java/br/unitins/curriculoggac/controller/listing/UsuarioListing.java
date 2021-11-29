@@ -26,6 +26,7 @@ public class UsuarioListing extends Listing<Usuario> {
 
 	public UsuarioListing() {
 		super("usuariolisting", new UsuarioRepository());
+		pesquisar();
 	}
 
 	@Override

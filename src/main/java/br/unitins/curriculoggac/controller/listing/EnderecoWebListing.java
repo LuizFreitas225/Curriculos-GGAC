@@ -21,7 +21,7 @@ public class EnderecoWebListing extends Listing<EnderecoWeb> {
 
 	public EnderecoWebListing() {
 		super("enderecoweblisting", new EnderecoWebRepository());
-		
+		pesquisar();
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		setCurriculoAtual((Curriculo) flash.get("curriculoAtual"));
 	}
@@ -30,7 +30,7 @@ public class EnderecoWebListing extends Listing<EnderecoWeb> {
 	public void pesquisar() {
 		EnderecoWebRepository repo = new EnderecoWebRepository();
 		try {
-			setList(repo.findByDescricao(filtro,getCurriculoAtual()));
+			setList(repo.findByDescricao(filtro, getCurriculoAtual()));
 		} catch (RepositoryException e) {
 			setList(new ArrayList<EnderecoWeb>());
 		}

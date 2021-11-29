@@ -2,7 +2,6 @@ package br.unitins.curriculoggac.controller.listing;
 
 import java.util.ArrayList;
 
-
 import javax.inject.Named;
 
 import br.unitins.curriculoggac.Repository.CurriculoRepository;
@@ -19,16 +18,17 @@ public class CurriculoListing extends Listing<Curriculo> {
 
 	private static final long serialVersionUID = -4010944566429542698L;
 	private String filtro = "";
-	
+
 	public CurriculoListing() {
 		super("curriculolisting", new CurriculoRepository());
+		pesquisar();
 	}
-	
+
 	@Override
 	public void pesquisar() {
 		CurriculoRepository repo = new CurriculoRepository();
 		try {
-			setList(repo.findByDescricao(filtro,20,getUsuarioLogado()));
+			setList(repo.findByDescricao(filtro, 20, getUsuarioLogado()));
 		} catch (RepositoryException e) {
 			setList(new ArrayList<Curriculo>());
 		}
@@ -44,9 +44,9 @@ public class CurriculoListing extends Listing<Curriculo> {
 
 	public Usuario getUsuarioLogado() {
 		// obtendo o usuario da sessao
-		
+
 		Usuario usuarioLogado = (Usuario) Session.getInstance().get("usuarioLogado");
-		
+
 		return usuarioLogado;
 	}
 
