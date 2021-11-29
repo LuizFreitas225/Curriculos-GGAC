@@ -17,64 +17,98 @@
 	</h:panelGroup>
 
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
-			onsuccess="PF('statusDialog').hide()" />
+		onsuccess="PF('statusDialog').hide()" />
 
-		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
-			closable="false" resizable="false" showHeader="false">
-			<p:graphicImage name="/images/processando.gif" />
-		</p:dialog>
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="/images/processando.gif" />
+	</p:dialog>
 
-		<h:form>
-			<p:growl id="growl" globalOnly="false" />
-			<p:panel id="panel">
-				<f:facet name="header">
-					<div align="center">
-						<div class="ui-g ui-fluid">
-							<div class="ui-g-12">
-								<div class="card card-w-title">
-									<div class="ui-inputgroup">
-										<p:inputText id="itFiltro" value="#{ consultaCurriculoController.filtro}"
-											placeholder="Informe o nome do curriculo..." />
-										<p:commandButton value="Pesquisar"
-											actionListener="#{consultaCurriculoController.pesquisar}"
-											process="@this itFiltro" update="dtCurriculo" />
-									</div>
+	<h:form>
+		<p:growl id="growl" globalOnly="false" />
+		<p:panel id="panel">
+			<f:facet name="header">
+				<div align="center">
+					<div class="ui-g ui-fluid">
+						<div class="ui-g-12">
+							<div class="card card-w-title">
+								<div class="ui-inputgroup">
+									<p:inputText id="itFiltro"
+										value="#{ consultaCurriculoController.filtro}"
+										placeholder="Informe o nome do curriculo..." />
+									<p:commandButton value="Pesquisar"
+										actionListener="#{consultaCurriculoController.pesquisar}"
+										process="@this itFiltro" update="dtCurriculo" />
 								</div>
 							</div>
 						</div>
 					</div>
-				</f:facet>
+				</div>
+			</f:facet>
+			<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-12">
 
-				<div class="ui-g ui-fluid">
-					<div class="ui-g-12">
+					<div class="card card-w-title">
 
-						<div class="card card-w-title">
-
-							<p:dataTable id="dtCurriculo" var="curriculo"
-								value="#{consultaCurriculoController.list}" rowIndexVar="row"
-								paginator="false" reflow="true">
-								<f:facet name="header">
+						<p:dataTable id="dtCurriculo" var="curriculo"
+							value="#{consultaCurriculoController.list}" rowIndexVar="row"
+							paginator="false" reflow="true">
+							<f:facet name="header">
                 Lista de Currículos
             </f:facet>
 
-								<p:column headerText="Id">
-									<p:commandLink value="#{curriculo.id}"
-										actionListener="#{consultaCurriculoController.select(curriculo.id)}"
-										process="@this" update="@form" />
-								</p:column>
+							<p:column headerText="Id">
+								<p:commandLink value="#{curriculo.id}"
+									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+									process="@this" update="@form" />
+							</p:column>
 
-								<p:column headerText="Descrição">
-									<p:commandLink value="#{curriculo.descricao}"
-										actionListener="#{consultaCurriculoController.select(curriculo.id)}"
-										process="@this" update="@form" />
-								</p:column>
+							<p:column headerText="Descrição">
+								<p:commandLink value="#{curriculo.descricao}"
+									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+									process="@this" update="@form" />
+							</p:column>
 
-							</p:dataTable>
-						</div>
+							<p:column headerText="Descrição">
+								<p:commandLink value="#{curriculo.descricao}"
+									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+									process="@this" update="@form" />
+							</p:column>
+
+							<p:column headerText="Opções">
+								<p:commandButton
+									actionListener="#{consultaCurriculoController.excluir(curriculo.id)}"
+									process="@form" update="@form"
+									styleClass="ui-button-raised ui-button-danger ui-button-flat"
+									icon="pi pi-times" style="margin: 15px 0px 0px 0px;">
+
+									<p:confirm type="popup" header="Confirmation"
+										message="Essa ação não poderá ser desfeita."
+										icon="pi pi-info-circle" />
+								</p:commandButton>
+								<p:confirmPopup global="true">
+									<p:commandButton value="Confirma" type="button"
+										styleClass="ui-confirm-popup-yes" />
+									<p:commandButton value="Cancelar" type="button"
+										styleClass="ui-confirm-popup-no ui-button-flat" />
+
+								</p:confirmPopup>
+								<p:commandButton
+									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+									process="@form" update="@form"
+									styleClass="ui-button-raised ui-button-danger ui-button-flat"
+									icon="pi pi-pencil" style="margin: 15px 0px 0px 0px;" />
+							</p:column>
+
+						</p:dataTable>
 					</div>
 				</div>
-			</p:panel>
+			</div>
+		</p:panel>
 
-		</h:form>
+	</h:form>
 </h:body>
 </html>

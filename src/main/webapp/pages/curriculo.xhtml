@@ -56,10 +56,10 @@
 						value="#{curriculoController.entity.pessoa.endereco.nome}" />
 					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
 						actionListener="#{curriculoController.abrirCidadeListing}"
-						update="inputForm mensagemValidacao " process="@this">
+						update="endereco mensagemValidacao " process="@this">
 						<p:ajax event="dialogReturn"
 							listener="#{curriculoController.obterCidadeListing}" process="@this"
-							update="@form:endereco" />
+							update="endereco" />
 					</p:commandButton>
 				</div>
 			</h:panelGroup>
@@ -81,14 +81,7 @@
 
 		<div style="width: 3rem; text-align: center">
 
-			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
-				value="Pesquisar."
-				actionListener="#{curriculoController.abrirCurriculoListing}"
-				process="@this" style="padding: 15px 0px 15px 0px;">
-				<p:ajax event="dialogReturn"
-					listener="#{curriculoController.obterCurriculoListing}"
-					update="inputForm" />
-			</p:commandLink>
+			
 
 
 			<p:commandButton update="inputForm mensagemValidacao "

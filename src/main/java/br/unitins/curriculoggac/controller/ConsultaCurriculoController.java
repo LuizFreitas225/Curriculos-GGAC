@@ -27,6 +27,10 @@ public class ConsultaCurriculoController implements Serializable {
 
 	private String filtro = "";
 	
+	public ConsultaCurriculoController() {
+		super();
+		pesquisar();
+	}
 	private List<Curriculo> list;
 	public void pesquisar() {
 		CurriculoRepository repo = new CurriculoRepository();
@@ -40,11 +44,27 @@ public class ConsultaCurriculoController implements Serializable {
 	public void select(int id) throws RepositoryException {
 		CurriculoRepository repo = new CurriculoRepository();
 		Curriculo curriculo = repo.findById(id);
-		System.out.println(curriculo);
+	
 		if(curriculo != null) {
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 			flash.put("curriculoAtual", curriculo );
 			Util.redirect("visualizacaocurriculo.xhtml");	
+		}
+	    	
+	}
+	public void excluir(int id) throws RepositoryException {
+		CurriculoRepository repo = new CurriculoRepository();
+		Curriculo curriculo = repo.findById(id);
+	
+		if(curriculo != null) {
+			try {
+				repo.remove(curriculo);
+				Util.addInfoMessage("Currículo Excluído com Sucesso.");
+			}catch(Exception e){
+				Util.addErrorMessage("Erro ao executar Exclusão.");
+				e.printStackTrace();
+			}
+			 	
 		}
 	    	
 	}
