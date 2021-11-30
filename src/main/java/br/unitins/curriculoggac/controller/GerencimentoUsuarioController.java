@@ -31,20 +31,20 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 
 	public void salvarUsuario() {
 
-		if (getConfirmarSenha().equals(entity.getSenha())) {
+		if (getConfirmarSenha().equals(getSenha())) {
 			try {
 				Usuario aux = getUsuarioRepository().findById(entity.getEmail());
 				if (aux != null) {
 					Util.addErrorMessage("Email já está em uso.");
 
 				}
-				if (getConfirmarSenha().isEmpty() || getSenha().isEmpty()) {
+				
 
-					String hash = Util.hash(entity.getEmail() + entity.getSenha());
+					String hash = Util.hash(entity.getEmail() + getSenha());
 					entity.setSenha(hash);
-					entity.setSenha(getSenha());
+					
 
-				}
+				
 				getUsuarioRepository().save(entity);
 				Util.addInfoMessage("Registro Realizado com Sucesso.");
 			} catch (RepositoryException e) {
@@ -64,9 +64,15 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 
 	public String alterarUsuario() {
 
-		if (getConfirmarSenha().equals(entity.getSenha())) {
+		if (getConfirmarSenha().equals(getSenha())) {
+			
+			if(! getSenha().isEmpty()) {
+           	 String hash = Util.hash(entity.getEmail() + getSenha());
+				entity.setSenha(hash);
+				
+            }
 			try {
-
+                 
 				getUsuarioRepository().save(entity);
 				Util.addInfoMessage("Alteração realizada com sucesso.");
 			} catch (RepositoryException e) {
