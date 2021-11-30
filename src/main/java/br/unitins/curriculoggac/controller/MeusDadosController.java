@@ -40,24 +40,23 @@ public class MeusDadosController extends Controller<Usuario> implements Serializ
 		if (getConfirmarSenha().equals(getSenha())) {
 			try {
 
-				if( getConfirmarSenha().isEmpty() || getSenha().isEmpty()) {
-					
+				if (!getSenha().isEmpty()) {
 					String hash = Util.hash(entity.getEmail() + entity.getSenha());
 					entity.setSenha(hash);
-					 entity.setSenha(getSenha());
-					
+					entity.setSenha(getSenha());
+
 				}
-				
+
 				getUsuarioRepository().save(entity);
 
 				if (getFotoInputStream() != null) {
 					// salvando a imagem
 					if (!Util.saveImageUsuario(fotoInputStream, "png", getEntity().getEmail())) {
-						Util.addErrorMessage("Erro ao salvar. Não foi possÃ­vel salvar a imagem do usuÃ¡rio.");
+						Util.addErrorMessage("Erro ao salvar. Não foi possivel salvar a imagem do usuario.");
 						return null;
 					}
 				}
-              
+
 				Util.addInfoMessage("Alteração realizada com sucesso.");
 			} catch (RepositoryException e) {
 				Util.addErrorMessage("Problema ao salvar, tente novamente ou entre em contato com a TI.");
@@ -69,9 +68,9 @@ public class MeusDadosController extends Controller<Usuario> implements Serializ
 			return null;
 		}
 
-		  limpar();
-          setSenha("");
-          setConfirmarSenha("");
+		limpar();
+		setSenha("");
+		setConfirmarSenha("");
 		return "login.xhtml?faces-redirect=true";
 	}
 

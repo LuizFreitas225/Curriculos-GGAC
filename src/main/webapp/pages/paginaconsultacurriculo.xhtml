@@ -24,7 +24,8 @@
 		<p:graphicImage name="/images/processando.gif" />
 	</p:dialog>
 
-	<h:form>
+	<h:form style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 		<p:growl id="growl" globalOnly="false" />
 		<p:panel id="panel">
 			<f:facet name="header">
@@ -72,11 +73,7 @@
 									process="@this" update="@form" />
 							</p:column>
 
-							<p:column headerText="Descrição">
-								<p:commandLink value="#{curriculo.descricao}"
-									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
-									process="@this" update="@form" />
-							</p:column>
+						
 
 							<p:column headerText="Opções">
 								<p:commandButton

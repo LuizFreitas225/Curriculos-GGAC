@@ -59,7 +59,7 @@ public class ConsultaCurriculoController implements Serializable {
 		if(curriculo != null) {
 			try {
 				repo.remove(curriculo);
-				Util.addInfoMessage("Currículo Excluído com Sucesso.");
+				Util.addInfoMessage("Curriculo Excluido com Sucesso.");
 			}catch(Exception e){
 				Util.addErrorMessage("Erro ao executar Exclusão.");
 				e.printStackTrace();
