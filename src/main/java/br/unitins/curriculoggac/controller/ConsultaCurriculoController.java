@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.context.FacesContext;
+
 import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -12,6 +12,7 @@ import javax.inject.Named;
 
 
 import br.unitins.curriculoggac.Repository.CurriculoRepository;
+import br.unitins.curriculoggac.application.FlashEasy;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Session;
 import br.unitins.curriculoggac.application.Util;
@@ -46,7 +47,7 @@ public class ConsultaCurriculoController implements Serializable {
 		Curriculo curriculo = repo.findById(id);
 	
 		if(curriculo != null) {
-			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+			Flash flash = FlashEasy.getInstance();
 			flash.put("curriculoAtual", curriculo );
 			Util.redirect("visualizacaocurriculo.xhtml");	
 		}

@@ -5,16 +5,40 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-Visualização de Currículo
-	</h:head>
+
 <h:head>
 	<title>Visualização de Currículo</title>
 </h:head>
 
 <h:body>
+	<h1>Visualização de Currículo</h1>
+	<ui:insert>
+		<ui:include src="../template/menu.xhtml"></ui:include>
+	</ui:insert>
 
 
+	<h:form id="inputForm"
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
+		<p:dataTable id="atributos" var="atributo"
+			value="#{visualizacaoController.listAtributo}"
+			rowKey="#{atributo.id}" selection="#{visualizacaoController.select}"
+			selectionMode="single">
+			<f:facet name="header">
+                Lista de Currículos
+            </f:facet>
+
+			<p:column headerText="Id">
+				<h:outputText value="#{atributo.id}" />
+			</p:column>
+
+			<p:column headerText="Atributo">
+				<h:outputText value="#{atributo.label}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
 </h:body>
 
 </html>
