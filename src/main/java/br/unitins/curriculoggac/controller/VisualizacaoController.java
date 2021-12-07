@@ -4,24 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-
+import br.unitins.curriculoggac.application.FlashEasy;
 import br.unitins.curriculoggac.application.Util;
 import br.unitins.curriculoggac.model.Atributo;
 import br.unitins.curriculoggac.model.Curriculo;
 
 @Named
 @ViewScoped
-public class VisualizacaoController extends Controller<Curriculo>  implements Serializable{
+public class VisualizacaoController extends Controller<Curriculo> implements Serializable {
 
-	
 	private static final long serialVersionUID = 4455921962753064357L;
+
+	private Atributo atributoCurriculo;
 
 	public VisualizacaoController() {
 		super();
@@ -29,9 +29,8 @@ public class VisualizacaoController extends Controller<Curriculo>  implements Se
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.keep("curriculoAtual");
 		setEntity((Curriculo) flash.get("curriculoAtual"));
+
 		
-		// Redireciona se o curriculo entity for null
-		//getEntity();
 	}
 
 	public void select(int id) {
@@ -39,28 +38,29 @@ public class VisualizacaoController extends Controller<Curriculo>  implements Se
 		if (entity != null) {
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 			flash.put("curriculoAtual", entity);
-			
 
 			if (id == 1) {
-
+				Util.redirect("consultaformacaoacademica.xhtml");
 			} else if (id == 2) {
-
+				Util.redirect("consultaformacaoacademica.xhtml");
 			} else if (id == 3) {
-
+				Util.redirect("consultaformacaoacademica.xhtml");
 			} else if (id == 4) {
-
+				Util.redirect("consultaformacaoacademica.xhtml");
 			} else if (id == 5) {
-
+				Util.redirect("consultaformacaoacademica.xhtml");
 			}
-		}else {
+		} else {
 			Util.redirect("paginaconsultacurriculo.xhtml");
 		}
+		Flash flash = FlashEasy.getInstance();
+		flash.keep("curriculoAtual");
 	}
 
 	public List<Atributo> getListAtributo() {
-		List<Atributo> lista= new ArrayList<Atributo>();
-		Atributo[] vetor=  Atributo.values();
-		for( int index=0;index < vetor.length; index++ ) {
+		List<Atributo> lista = new ArrayList<Atributo>();
+		Atributo[] vetor = Atributo.values();
+		for (int index = 0; index < vetor.length; index++) {
 			lista.add(vetor[index]);
 		}
 		return lista;
@@ -69,7 +69,17 @@ public class VisualizacaoController extends Controller<Curriculo>  implements Se
 	@Override
 	public Curriculo getEntity() {
 
-		
 		return entity;
 	}
+
+	public Atributo getAtributoCurriculo() {
+		return atributoCurriculo;
+	}
+
+//	public void setAtributoCurriculo(Atributo atributoCurriculo) {
+//		this.atributoCurriculo = atributoCurriculo;
+//		System.out.println("SETOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+//	}
+//	
+
 }
