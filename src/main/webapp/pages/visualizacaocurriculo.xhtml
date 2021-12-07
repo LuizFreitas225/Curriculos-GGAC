@@ -24,9 +24,10 @@
 		<h1>Visualização de Currículo</h1>
 		
 		
-		<h:outputLabel url= "paginaconsultacurriculo.xhtml" 
+		 <h:outputLabel 
 		rendered="#{visualizacaoController.entity == null }">
-		 Volte para a página de consulta e selecione um currículo.</h:outputLabel>
+		<a href="paginaconsultacurriculo.xhtml">Volte para a página de consulta e selecione um currículo.</a>
+		 </h:outputLabel>
 		<p:dataTable id="atributos" var="atributo"
 		rendered="#{visualizacaoController.entity != null }"
 			value="#{visualizacaoController.listAtributo}"

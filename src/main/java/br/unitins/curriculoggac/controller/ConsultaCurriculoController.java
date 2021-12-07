@@ -53,6 +53,11 @@ public class ConsultaCurriculoController implements Serializable {
 		}
 	    	
 	}
+	
+	public void novo()  {
+		
+	    Util.redirect("curriculo.xhtml");	
+	}
 	public void excluir(int id) throws RepositoryException {
 		CurriculoRepository repo = new CurriculoRepository();
 		Curriculo curriculo = repo.findById(id);

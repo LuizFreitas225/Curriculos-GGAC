@@ -76,10 +76,6 @@ public class VisualizacaoController extends Controller<Curriculo> implements Ser
 		return atributoCurriculo;
 	}
 
-//	public void setAtributoCurriculo(Atributo atributoCurriculo) {
-//		this.atributoCurriculo = atributoCurriculo;
-//		System.out.println("SETOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-//	}
-//	
+
 
 }

@@ -25,30 +25,37 @@
 	</p:dialog>
 
 	<h:form
+		
 		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 		<p:growl id="growl" globalOnly="false" />
-
 		
-		<p:panel id="panel">
+		<h1>Visualização Currículo</h1>
+		<h:outputLabel
+			rendered="#{consultaFormacaoAcademicaController.curriculo == null }">
+			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
+				consulta e selecione um currículo.</a>
+		</h:outputLabel>
+
+		<p:panel id="panel" rendered="#{consultaFormacaoAcademicaController.curriculo != null }">
 			<f:facet name="header">
 				<div align="center">
-				 
+
 					<div class="ui-g ui-fluid">
-					Consulta Currículo
+						Consulta Formação Acadêmica
 						<div class="ui-g-12">
 							<div class="card card-w-title">
 								<div class="ui-inputgroup">
 									<p:inputText id="itFiltro"
-										value="#{ consultaCurriculoController.filtro}"
-										placeholder="Informe o nome do curriculo..." />
+										value="#{consultaFormacaoAcademicaController.filtro}"
+										placeholder="Informe a descrição da formação..." />
 									<p:commandButton value="Pesquisar"
-										actionListener="#{consultaCurriculoController.pesquisar}"
-										process="@this itFiltro" update="dtCurriculo" />
+										actionListener="#{consultaFormacaoAcademicaController.pesquisar}"
+										process="@this itFiltro" update="dataT" />
 										
 										<p:commandButton  icon="pi pi-plus" styleClass="ui-button-secondary"
-										actionListener="#{consultaCurriculoController.novo}"
-										process="@this itFiltro" update="dtCurriculo" />
+										actionListener="#{consultaFormacaoAcademicaController.novo}"
+										process="@this"  />
 								</div>
 							</div>
 						</div>
@@ -63,22 +70,22 @@
 
 					<div class="card card-w-title">
 
-						<p:dataTable id="dtCurriculo" var="curriculo"
-							value="#{consultaCurriculoController.list}" rowIndexVar="row"
-							paginator="false" reflow="true">
+						<p:dataTable id="dataT" var="entity"
+							value="#{consultaFormacaoAcademicaController.list}"
+							rowIndexVar="row" paginator="false" reflow="true">
 							<f:facet name="header">
                 Lista de Currículos
             </f:facet>
 
 							<p:column headerText="Id">
-								<p:commandLink value="#{curriculo.id}"
-									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+								<p:commandLink value="#{entity.id}"
+									actionListener="#{consultaFormacaoAcademicaController.select(entity.id)}"
 									process="@this" update="@form" />
 							</p:column>
 
 							<p:column headerText="Descrição">
-								<p:commandLink value="#{curriculo.descricao}"
-									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+								<p:commandLink value="#{entity.nome}"
+									actionListener="#{consultaFormacaoAcademicaController.select(entity.id)}"
 									process="@this" update="@form" />
 							</p:column>
 
@@ -86,7 +93,7 @@
 
 							<p:column headerText="Opções">
 								<p:commandButton
-									actionListener="#{consultaCurriculoController.excluir(curriculo.id)}"
+									actionListener="#{consultaFormacaoAcademicaController.excluir(entity.id)}"
 									process="@form" update="@form"
 									styleClass="ui-button-raised ui-button-danger ui-button-flat"
 									icon="pi pi-times" style="margin: 15px 0px 0px 0px;">
@@ -103,7 +110,7 @@
 
 								</p:confirmPopup>
 								<p:commandButton
-									actionListener="#{consultaCurriculoController.select(curriculo.id)}"
+									actionListener="#{consultaFormacaoAcademicaController.select(entity.id)}"
 									process="@form" update="@form"
 									styleClass="ui-button-raised ui-button-danger ui-button-flat"
 									icon="pi pi-pencil" style="margin: 15px 0px 0px 0px;" />
