@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/br/unitins/curriculoggac/Repository/EnderecoWebRepository.java=UTF-8
+encoding//src/main/java/br/unitins/curriculoggac/Repository/InformacaoAdicionalRepository.java=UTF-8
 encoding//src/main/java/br/unitins/curriculoggac/Repository/QualificacaoRepository.java=UTF-8
 encoding//src/main/java/br/unitins/curriculoggac/controller/ConsultaEnderecoWebController.java=UTF-8
+encoding//src/main/java/br/unitins/curriculoggac/controller/ConsultaInformacaoAdicionalController.java=UTF-8
 encoding//src/main/java/br/unitins/curriculoggac/controller/ConsultaQualificacaoController.java=UTF-8

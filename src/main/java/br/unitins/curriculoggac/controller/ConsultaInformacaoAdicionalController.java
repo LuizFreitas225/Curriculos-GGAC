@@ -9,16 +9,17 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 
-import br.unitins.curriculoggac.Repository.FormacaoAcademicaRepository;
+import br.unitins.curriculoggac.Repository.InformacaoAdicionalRepository;
 import br.unitins.curriculoggac.application.FlashEasy;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Util;
 import br.unitins.curriculoggac.model.Curriculo;
-import br.unitins.curriculoggac.model.FormacaoAcademica;
+import br.unitins.curriculoggac.model.InformacaoAdicional;
+
 
 @Named
 @ViewScoped
-public class ConsultaFormacaoAcademicaController implements Serializable {
+public class ConsultaInformacaoAdicionalController implements Serializable {
 	/**
 	 * 
 	 */
@@ -26,9 +27,9 @@ public class ConsultaFormacaoAcademicaController implements Serializable {
 
 	private String filtro = "";
 	private Curriculo curriculo;
-	private List<FormacaoAcademica> list;
+	private List<InformacaoAdicional> list;
 
-	public ConsultaFormacaoAcademicaController() {
+	public ConsultaInformacaoAdicionalController() {
 		super();
 		Flash flash = FlashEasy.getInstance();
 		setCurriculo((Curriculo) flash.get("curriculoAtual"));
@@ -42,41 +43,41 @@ public class ConsultaFormacaoAcademicaController implements Serializable {
 
 		Flash flash = FlashEasy.getInstance();
 		flash.put("curriculoAtual", curriculo);
-		Util.redirect("formacaoacademica.xhtml");
+		Util.redirect("informacaoadicional.xhtml");
 	}
 
 	public void pesquisar() {
-		FormacaoAcademicaRepository repo = new FormacaoAcademicaRepository();
+		InformacaoAdicionalRepository repo = new  InformacaoAdicionalRepository();
 		try {
 			setList(repo.findByNome(filtro, getCurriculo()));
 		} catch (Exception e) {
-			setList(new ArrayList<FormacaoAcademica>());
+			setList(new ArrayList< InformacaoAdicional>());
 		}
 	}
 
 	public void select(int id) throws RepositoryException {
-		FormacaoAcademicaRepository repo = new FormacaoAcademicaRepository();
-		FormacaoAcademica entity = repo.findById(id);
+		 InformacaoAdicionalRepository repo = new  InformacaoAdicionalRepository();
+		 InformacaoAdicional entity = repo.findById(id);
 
 		if (entity != null) {
 			Flash flash = FlashEasy.getInstance();
-			flash.put("formacaoAtual", entity);
+			flash.put("informacaoAdicionalAtual", entity);
 			flash.put("curriculoAtual", curriculo);
-			Util.redirect("formacaoacademica.xhtml");
+			Util.redirect("informacaoadicional.xhtml");
 		}
 
 	}
 
 	public void excluir(int id) throws RepositoryException {
-		FormacaoAcademicaRepository repo = new FormacaoAcademicaRepository();
-		FormacaoAcademica entity = repo.findById(id);
+		 InformacaoAdicionalRepository repo = new  InformacaoAdicionalRepository();
+		 InformacaoAdicional entity = repo.findById(id);
 
 		if (entity != null) {
 			try {
 				repo.remove(entity);
 				Util.addInfoMessage(" Excluido com Sucesso.");
 			} catch (Exception e) {
-				Util.addErrorMessage("Erro ao executar Exclusão.");
+				Util.addErrorMessage("Erro ao executar Exclusao.");
 				e.printStackTrace();
 			}
 
@@ -100,11 +101,11 @@ public class ConsultaFormacaoAcademicaController implements Serializable {
 		this.curriculo = curriculo;
 	}
 
-	public void setList(List<FormacaoAcademica> list) {
+	public void setList(List< InformacaoAdicional> list) {
 		this.list = list;
 	}
 
-	public List<FormacaoAcademica> getList() {
+	public List< InformacaoAdicional> getList() {
 		return list;
 	}
 

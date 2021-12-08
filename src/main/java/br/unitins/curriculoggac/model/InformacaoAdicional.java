@@ -13,7 +13,7 @@ public class InformacaoAdicional {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NotEmpty(message = "Insira o titulo.")
-	private String titulo;
+	private String nome;
 	@NotEmpty(message = "Insira a descrição.")
 	private String descricao;
 	
@@ -34,11 +34,11 @@ public class InformacaoAdicional {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getTitulo() {
-		return titulo;
+	public String getNome() {
+		return nome;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getDescricao() {
 		return descricao;

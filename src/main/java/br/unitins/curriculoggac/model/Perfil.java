@@ -33,6 +33,9 @@ public enum Perfil {
 		
 		paginasComPermissao.add("/CurriculoGGP/faces/pages/consultaenderecoweb.xhtml");
 		paginasComPermissao.add("/CurriculoGGP/faces/pages/enderecoweb.xhtml");
+		
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/consultainformacaoadicional.xhtml");
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/informacaoadicional.xhtml");
 
 		paginasComPermissao.add("/CurriculoGGP/faces/pages/cidade.xhtml");
 		paginasComPermissao.add("/CurriculoGGP/faces/pages/cidadelisting.xhtml");

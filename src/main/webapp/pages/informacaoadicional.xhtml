@@ -21,30 +21,32 @@
 		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
-		<h1>Gerenciamento de Endereços Web</h1>
+		<h1>Gerenciamento de Formação Acadêmica</h1>
 
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
 		<h:outputLabel
-			rendered="#{enderecoWebController.curriculo == null }">
+			rendered="#{informacaoAdicionalController.curriculo == null }">
 			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
 				consulta e selecione um currículo.</a>
 		</h:outputLabel>
 		<h:panelGrid columns="2"
-			rendered="#{enderecoWebController.curriculo != null }">
+			rendered="#{informacaoAdicionalController.curriculo != null }">
 			<div class="p-field" style="padding: 0px 0px 10px 0px;">
 				<label for="firstname">Nome</label>
 				<p:inputText id="nome" type="text"
-					value="#{enderecoWebController.entity.descricao}" />
+					value="#{informacaoAdicionalController.entity.nome}" />
 			</div>
 
+
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
-				<label for="firstname">Enderecp</label>
+				<label for="firstname">Descrição</label>
 				<p:inputText type="text"
-					value="#{enderecoWebController.entity.endereco}" />
+					value="#{informacaoAdicionalController.entity.descricao}" />
 			</div>
-		
+
+
 
 
 
@@ -54,20 +56,20 @@
 		<div style="width: 3rem; text-align: center">
 
 			<h:panelGrid columns="5" id="panelButtons"
-				rendered="#{enderecoWebController.curriculo != null }">
+				rendered="#{informacaoAdicionalController.curriculo != null }">
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Cadastrar" icon="pi pi-save" title="Cadastrar"
-					action="#{enderecoWebController.salvar}"
+					action="#{informacaoAdicionalController.salvar}"
 					styleClass="ui-button-raised ui-button-success ui-button-flat"
 					style="margin: 15px 0px 0px 0px;"
-					rendered="#{enderecoWebController.entity.id == null}">
+					rendered="#{informacaoAdicionalController.entity.id == null}">
 					<p:confirm type="popup" header="Confirmation"
 						message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
 				</p:commandButton>
 
 
 				<p:commandButton value="Limpar"
-					actionListener="#enderecoWebController.limpar}"
+					actionListener="#{informacaoAdicionalController.limpar}"
 					process="@this" update="@form panelButtons"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;" />
@@ -76,20 +78,20 @@
 
 				<p:commandButton update="@form mensagemValidacao panelButtons "
 					value="Alterar" icon="pi pi-pencil" title="Alterar"
-					action="#{enderecoWebController.salvar}"
+					action="#{informacaoAdicionalController.salvar}"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;"
-					rendered="#{enderecoWebController.entity.id != null}">
+					rendered="#{formacaoAcademicaController.entity.id != null}">
 					<p:confirm type="popup" header="Confirmation"
 						message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
 				</p:commandButton>
 
 				<p:commandButton value="Excluir"
-					actionListener="#{enderecoWebController.excluir}"
+					actionListener="#{informacaoAdicionalController.excluir}"
 					process="@form" update="@form mensagemValidacao panelButtons "
 					styleClass="ui-button-raised ui-button-danger ui-button-flat"
 					icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
-					rendered="#{enderecoWebController.entity.id != null}">
+					rendered="#{informacaoAdicionalController.entity.id != null}">
 
 
 					<p:confirm type="popup" header="Confirmation"
