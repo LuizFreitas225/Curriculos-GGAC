@@ -18,8 +18,7 @@ public class ExperienciaProfissional {
 	private String cargo;
 	@NotEmpty(message = "Insira o período.")
 	private String periodo;
-	@NotEmpty(message = "Insira o local.")
-	private String local;
+
 	
 	@NotNull(message = "Víncule uma pessoa a essa expêriencia.")
 	@ManyToOne
@@ -56,12 +55,7 @@ public class ExperienciaProfissional {
 	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
-	public String getLocal() {
-		return local;
-	}
-	public void setLocal(String local) {
-		this.local = local;
-	}
+	
 	
 	
 }

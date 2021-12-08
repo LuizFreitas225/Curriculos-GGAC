@@ -48,7 +48,7 @@ public class VisualizacaoController extends Controller<Curriculo> implements Ser
 			} else if (id == 4) {
 				Util.redirect("consultainformacaoadicional.xhtml");
 			} else if (id == 5) {
-				Util.redirect("consultaformacaoacademica.xhtml");
+				Util.redirect("consultaexperienciaprofissional.xhtml");
 			}
 		} else {
 			Util.redirect("paginaconsultacurriculo.xhtml");

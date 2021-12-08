@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Visualizaão Currículo</title>
+</h:head>
+
+<h:body>
+
+	<h:panelGroup id="menu" layout="block">
+		<ui:insert>
+			<ui:include src="../template/menu.xhtml"></ui:include>
+		</ui:insert>
+	</h:panelGroup>
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="/images/processando.gif" />
+	</p:dialog>
+
+	<h:form
+		
+		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
+    margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
+		<p:growl id="growl" globalOnly="false" />
+		
+		<h1>Visualização Currículo</h1>
+		<h:outputLabel
+			rendered="#{consultaExperienciaProfissionalController.curriculo == null }">
+			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
+				consulta e selecione um currículo.</a>
+		</h:outputLabel>
+
+		<p:panel id="panel" rendered="#{consultaFormacaoAcademicaController.curriculo != null }">
+			<f:facet name="header">
+				<div align="center">
+
+					<div class="ui-g ui-fluid">
+						Consulta Experiencia Profissional
+						<div class="ui-g-12">
+							<div class="card card-w-title">
+								<div class="ui-inputgroup">
+									<p:inputText id="itFiltro"
+										value="#{consultaExperienciaProfissionalController.filtro}"
+										placeholder="Informe a descrição da formação..." />
+									<p:commandButton value="Pesquisar"
+										actionListener="#{consultaExperienciaProfissionalController.pesquisar}"
+										process="@this itFiltro" update="dataT" />
+										
+										<p:commandButton  icon="pi pi-plus" styleClass="ui-button-secondary"
+										actionListener="#{consultaExperienciaProfissionalController.novo}"
+										process="@this"  />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:facet>
+			<p:messages id="mensagemValidacao" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-12">
+
+					<div class="card card-w-title">
+
+						<p:dataTable id="dataT" var="entity"
+							value="#{consultaExperienciaProfissionalController.list}"
+							rowIndexVar="row" paginator="false" reflow="true">
+							<f:facet name="header">
+                Lista de Currículos
+            </f:facet>
+
+							<p:column headerText="Id">
+								<p:commandLink value="#{entity.id}"
+									actionListener="#{consultaExperienciaProfissionalController.select(entity.id)}"
+									process="@this" update="@form" />
+							</p:column>
+
+							<p:column headerText="Cargo">
+								<p:commandLink value="#{entity.cargo}"
+									actionListener="#{consultaExperienciaProfissionalController.select(entity.id)}"
+									process="@this" update="@form" />
+							</p:column>
+							
+							<p:column headerText="Empresa">
+								<p:commandLink value="#{entity.empresa}"
+									actionListener="#{consultaExperienciaProfissionalController.select(entity.id)}"
+									process="@this" update="@form" />
+							</p:column>
+
+
+
+							<p:column headerText="Opções">
+								<p:commandButton
+									actionListener="#{consultaExperienciaProfissionalController.excluir(entity.id)}"
+									process="@form" update="@form"
+									styleClass="ui-button-raised ui-button-danger ui-button-flat"
+									icon="pi pi-times" style="margin: 15px 0px 0px 0px;">
+
+									<p:confirm type="popup" header="Confirmation"
+										message="Essa ação não poderá ser desfeita."
+										icon="pi pi-info-circle" />
+								</p:commandButton>
+								<p:confirmPopup global="true">
+									<p:commandButton value="Confirma" type="button"
+										styleClass="ui-confirm-popup-yes" />
+									<p:commandButton value="Cancelar" type="button"
+										styleClass="ui-confirm-popup-no ui-button-flat" />
+
+								</p:confirmPopup>
+								<p:commandButton
+									actionListener="#{consultaExperienciaProfissionalController.select(entity.id)}"
+									process="@form" update="@form"
+									styleClass="ui-button-raised ui-button-danger ui-button-flat"
+									icon="pi pi-pencil" style="margin: 15px 0px 0px 0px;" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</p:panel>
+
+	</h:form>
+</h:body>
+</html>
