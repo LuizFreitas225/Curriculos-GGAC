@@ -22,7 +22,7 @@
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
 		<h1>Gerenciamento de Endereços Web</h1>
-
+          <h4>#{enderecoWebController.curriculo.descricao}</h4>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
@@ -67,7 +67,7 @@
 
 
 				<p:commandButton value="Limpar"
-					actionListener="#enderecoWebController.limpar}"
+					actionListener="#{enderecoWebController.limpar}"
 					process="@this" update="@form panelButtons"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;" />

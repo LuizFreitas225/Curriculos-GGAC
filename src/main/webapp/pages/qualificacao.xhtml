@@ -22,12 +22,11 @@
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
 		<h1>Gerenciamento de Qualificação</h1>
-
+		<h4>#{qualificacaoController.curriculo.descricao}</h4>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
-		<h:outputLabel
-			rendered="#{qualificacaoController.curriculo == null }">
+		<h:outputLabel rendered="#{qualificacaoController.curriculo == null }">
 			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
 				consulta e selecione um currículo.</a>
 		</h:outputLabel>
@@ -52,8 +51,7 @@
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Status</label>
-				<p:selectOneMenu
-					value="#{qualificacaoController.entity.status}">
+				<p:selectOneMenu value="#{qualificacaoController.entity.status}">
 					<f:selectItem itemLabel="Selecione ..." />
 					<f:selectItems value="#{qualificacaoController.listStatus}"
 						var="obj" itemLabel="#{obj.label}" />
@@ -83,8 +81,8 @@
 
 
 				<p:commandButton value="Limpar"
-					actionListener="#{qualificacaoController.limpar}"
-					process="@this" update="@form panelButtons"
+					actionListener="#{qualificacaoController.limpar}" process="@this"
+					update="@form panelButtons"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;" />
 
@@ -101,8 +99,8 @@
 				</p:commandButton>
 
 				<p:commandButton value="Excluir"
-					actionListener="#{qualificacaoController.excluir}"
-					process="@form" update="@form mensagemValidacao panelButtons "
+					actionListener="#{qualificacaoController.excluir}" process="@form"
+					update="@form mensagemValidacao panelButtons "
 					styleClass="ui-button-raised ui-button-danger ui-button-flat"
 					icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
 					rendered="#{formacaoAcademicaController.entity.id != null}">
