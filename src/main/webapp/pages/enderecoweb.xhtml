@@ -22,12 +22,11 @@
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 
 		<h1>Gerenciamento de Endereços Web</h1>
-          <h4>#{enderecoWebController.curriculo.descricao}</h4>
+		<h4>#{enderecoWebController.curriculo.descricao}</h4>
 		<p:messages id="mensagemValidacao" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
-		<h:outputLabel
-			rendered="#{enderecoWebController.curriculo == null }">
+		<h:outputLabel rendered="#{enderecoWebController.curriculo == null }">
 			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
 				consulta e selecione um currículo.</a>
 		</h:outputLabel>
@@ -44,13 +43,22 @@
 				<p:inputText type="text"
 					value="#{enderecoWebController.entity.endereco}" />
 			</div>
-		
+
 
 
 
 		</h:panelGrid>
 
+		<div class="card" style="padding: 0px 0px 15px 0px;">
 
+			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
+				value="Voltar" action="#{enderecoWebController.voltar}"
+				style="padding: 15px 0px 15px 0px;">
+
+			</p:commandLink>
+
+
+		</div>
 		<div style="width: 3rem; text-align: center">
 
 			<h:panelGrid columns="5" id="panelButtons"
@@ -67,8 +75,8 @@
 
 
 				<p:commandButton value="Limpar"
-					actionListener="#{enderecoWebController.limpar}"
-					process="@this" update="@form panelButtons"
+					actionListener="#{enderecoWebController.limpar}" process="@this"
+					update="@form panelButtons"
 					styleClass="ui-button-raised ui-button-flat ui-button-plain"
 					style="margin: 15px 0px 0px 0px;" />
 
@@ -85,8 +93,8 @@
 				</p:commandButton>
 
 				<p:commandButton value="Excluir"
-					actionListener="#{enderecoWebController.excluir}"
-					process="@form" update="@form mensagemValidacao panelButtons "
+					actionListener="#{enderecoWebController.excluir}" process="@form"
+					update="@form mensagemValidacao panelButtons "
 					styleClass="ui-button-raised ui-button-danger ui-button-flat"
 					icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
 					rendered="#{enderecoWebController.entity.id != null}">

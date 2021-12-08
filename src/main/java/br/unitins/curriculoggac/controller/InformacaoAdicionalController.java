@@ -48,7 +48,9 @@ public class InformacaoAdicionalController extends Controller<InformacaoAdiciona
 
 	}
 	
-	
+	public void voltar() {
+		Util.redirect("consultainformacaoadicional.xhtml");
+	}
 	public Curriculo getCurriculo() {
 		Flash flash = FlashEasy.getInstance();
 		Curriculo atual =(Curriculo) flash.get("curriculoAtual");

@@ -54,7 +54,9 @@ public class EnderecoWebController extends Controller<EnderecoWeb> implements Se
 
 	}
 	
-	
+	public void voltar() {
+		Util.redirect("consultaenderecoweb.xhtml");
+	}
 
 	public Curriculo getCurriculo() {
 		Flash flash = FlashEasy.getInstance();

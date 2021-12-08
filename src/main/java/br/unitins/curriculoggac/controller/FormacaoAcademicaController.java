@@ -49,7 +49,9 @@ public class FormacaoAcademicaController extends Controller<FormacaoAcademica> i
 		return entity;
 
 	}
-	
+	public void voltar() {
+		Util.redirect("consultaformacaoacademica.xhtml");
+	}
 	public StatusFormacao[] getListStatus(){
 		return StatusFormacao.values();
 	}

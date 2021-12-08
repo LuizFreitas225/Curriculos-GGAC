@@ -49,7 +49,9 @@ public class QualificacaoController extends Controller<Qualificacao> implements 
 		return entity;
 
 	}
-	
+	public void voltar() {
+		Util.redirect("consultaqualificacao.xhtml");
+	}
 	public StatusFormacao[] getListStatus(){
 		return StatusFormacao.values();
 	}

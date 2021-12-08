@@ -50,7 +50,9 @@ public class ExperienciaProfissionalController extends Controller<ExperienciaPro
 
 	}
 	
-	
+	public void voltar() {
+		Util.redirect("consultaexperienciaprofissional.xhtml");
+	}
 
 	public Curriculo getCurriculo() {
 		Flash flash = FlashEasy.getInstance();
