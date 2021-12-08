@@ -19,23 +19,24 @@ public class LoginController {
     private String senha="";
     
     
-    public String entrar() throws RepositoryException {
+    public void entrar() throws RepositoryException {
     	try {
     		 Usuario usuarioLogado = getUsuarioRepository().validarLogin(email, senha);
     		 if(usuarioLogado == null) {
     			 Util.addErrorMessage("Email ou senha incorreto.");
-    			 return null;
+    			
     		 }else {
     			 Session.getInstance().set("usuarioLogado", usuarioLogado);	
     			 Util.addInfoMessage("Login realizado com sucesso.");
-    			 return "/pages/estado.xhtml?faces-redirect=true";
+    			 Util.redirect("pages/inicial.xhtml");
+    			 
     		 }
     	}catch(Exception e) {
     		e.printStackTrace();
     		Util.addErrorMessage("Erro ao logar.Tente novamente mais tarde.");
     	}
        
-    	return null;
+    
     }
     
     public String cadastro() {
