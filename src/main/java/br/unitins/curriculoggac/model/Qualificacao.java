@@ -13,18 +13,7 @@ public class Qualificacao extends Formacao{
 	
 	@NotEmpty(message = "Insira a quantidade de horas.")
 	private String horas ;
-	@NotNull(message = "Víncule uma pessoa a essa qualificação.")
-	@ManyToOne
-	private Pessoa pessoa;
 	
-	
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-
 	public String getHoras() {
 		return horas;
 	}
