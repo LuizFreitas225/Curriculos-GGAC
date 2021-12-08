@@ -25,25 +25,32 @@
 	</p:dialog>
 
 	<h:form
-		
 		style="background-color:#F8F9FA;border-radius: 10px; width:60%; heigth:90%;  margin-left: auto;
     margin-right: auto; margin-top: 5%; padding: 50px 80px 50px 80px;border:#A0BDC5 solid 1px ">
 		<p:growl id="growl" globalOnly="false" />
-		
+
 		<h1>Visualização Currículo</h1>
-			<h4>#{consultaFormacaoAcademicaController.curriculo.descricao}</h4>
+		<h4>#{consultaFormacaoAcademicaController.curriculo.descricao}</h4>
 		<h:outputLabel
 			rendered="#{consultaFormacaoAcademicaController.curriculo == null }">
 			<a href="paginaconsultacurriculo.xhtml">Volte para a página de
 				consulta e selecione um currículo.</a>
 		</h:outputLabel>
 
-		<p:panel id="panel" rendered="#{consultaFormacaoAcademicaController.curriculo != null }">
+		<p:panel id="panel"
+			rendered="#{consultaFormacaoAcademicaController.curriculo != null }">
 			<f:facet name="header">
+			
+					Consulta Formação Acadêmica |
+			  <a style="text-decoration: none;color:#495057" href="visualizacaocurriculo.xhtml">
+					Atributos</a> |  <a style="text-decoration: none;color:#695057"
+					href="paginaconsultacurriculo.xhtml"> Olhar outro </a>
+                | <a style="text-decoration: none;color:#495057" href="..">
+					Download</a> |
 				<div align="center">
 
 					<div class="ui-g ui-fluid">
-						Consulta Formação Acadêmica
+
 						<div class="ui-g-12">
 							<div class="card card-w-title">
 								<div class="ui-inputgroup">
@@ -53,10 +60,11 @@
 									<p:commandButton value="Pesquisar"
 										actionListener="#{consultaFormacaoAcademicaController.pesquisar}"
 										process="@this itFiltro" update="dataT" />
-										
-										<p:commandButton  icon="pi pi-plus" styleClass="ui-button-secondary"
+
+									<p:commandButton icon="pi pi-plus"
+										styleClass="ui-button-secondary"
 										actionListener="#{consultaFormacaoAcademicaController.novo}"
-										process="@this"  />
+										process="@this" />
 								</div>
 							</div>
 						</div>

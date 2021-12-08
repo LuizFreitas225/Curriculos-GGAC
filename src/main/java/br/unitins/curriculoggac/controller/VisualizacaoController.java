@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
@@ -16,7 +17,7 @@ import br.unitins.curriculoggac.model.Atributo;
 import br.unitins.curriculoggac.model.Curriculo;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class VisualizacaoController extends Controller<Curriculo> implements Serializable {
 
 	private static final long serialVersionUID = 4455921962753064357L;
@@ -68,7 +69,12 @@ public class VisualizacaoController extends Controller<Curriculo> implements Ser
 
 	@Override
 	public Curriculo getEntity() {
-
+		Flash flash = FlashEasy.getInstance();
+		Curriculo atual =(Curriculo) flash.get("curriculoAtual");
+		if( entity != atual && atual != null) {
+			entity = atual;
+		}
+		
 		return entity;
 	}
 

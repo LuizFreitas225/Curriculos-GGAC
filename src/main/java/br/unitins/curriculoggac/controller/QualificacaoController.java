@@ -2,6 +2,7 @@ package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -54,9 +55,15 @@ public class QualificacaoController extends Controller<Qualificacao> implements 
 	}
 
 	public Curriculo getCurriculo() {
+		Flash flash = FlashEasy.getInstance();
+		Curriculo atual =(Curriculo) flash.get("curriculoAtual");
+		if( curriculo != atual && atual != null) {
+			curriculo = atual;
+		}
+		
+		
 		return curriculo;
 	}
-
 	public void setCurriculo(Curriculo curriculo) {
 		this.curriculo = curriculo;
 	}

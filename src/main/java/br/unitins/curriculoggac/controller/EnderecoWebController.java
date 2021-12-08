@@ -2,27 +2,21 @@ package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
 
-import javax.faces.context.FacesContext;
-import javax.faces.context.Flash;
 
-import org.primefaces.event.SelectEvent;
-
-import br.unitins.curriculoggac.controller.listing.PaisListing;
-import br.unitins.curriculoggac.model.Curriculo;
-import br.unitins.curriculoggac.model.EnderecoWeb;
-import br.unitins.curriculoggac.model.endereco.Pais;
 
 import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
+
+import br.unitins.curriculoggac.model.Curriculo;
+import br.unitins.curriculoggac.model.EnderecoWeb;
+
+
+
 import javax.inject.Named;
 
 import br.unitins.curriculoggac.application.FlashEasy;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Util;
-import br.unitins.curriculoggac.model.Curriculo;
-import br.unitins.curriculoggac.model.EstadoCivil;
-import br.unitins.curriculoggac.model.FormacaoAcademica;
-import br.unitins.curriculoggac.model.StatusFormacao;
 
 @Named
 @ViewScoped
@@ -63,6 +57,13 @@ public class EnderecoWebController extends Controller<EnderecoWeb> implements Se
 	
 
 	public Curriculo getCurriculo() {
+		Flash flash = FlashEasy.getInstance();
+		Curriculo atual =(Curriculo) flash.get("curriculoAtual");
+		if( curriculo != atual && atual != null) {
+			curriculo = atual;
+		}
+		
+		
 		return curriculo;
 	}
 

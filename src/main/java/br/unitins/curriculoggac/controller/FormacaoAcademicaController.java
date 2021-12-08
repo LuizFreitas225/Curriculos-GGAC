@@ -2,6 +2,7 @@ package br.unitins.curriculoggac.controller;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -10,7 +11,6 @@ import br.unitins.curriculoggac.application.FlashEasy;
 import br.unitins.curriculoggac.application.RepositoryException;
 import br.unitins.curriculoggac.application.Util;
 import br.unitins.curriculoggac.model.Curriculo;
-import br.unitins.curriculoggac.model.EstadoCivil;
 import br.unitins.curriculoggac.model.FormacaoAcademica;
 import br.unitins.curriculoggac.model.StatusFormacao;
 
@@ -55,6 +55,13 @@ public class FormacaoAcademicaController extends Controller<FormacaoAcademica> i
 	}
 
 	public Curriculo getCurriculo() {
+		Flash flash = FlashEasy.getInstance();
+		Curriculo atual =(Curriculo) flash.get("curriculoAtual");
+		if( curriculo != atual && atual != null) {
+			curriculo = atual;
+		}
+		
+		
 		return curriculo;
 	}
 
