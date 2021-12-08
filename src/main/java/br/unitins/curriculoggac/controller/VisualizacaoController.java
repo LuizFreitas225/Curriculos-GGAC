@@ -40,7 +40,7 @@ public class VisualizacaoController extends Controller<Curriculo> implements Ser
 			flash.put("curriculoAtual", entity);
 
 			if (id == 1) {
-				Util.redirect("consultaformacaoacademica.xhtml");
+				Util.redirect("consultaenderecoweb.xhtml");
 			} else if (id == 2) {
 				Util.redirect("consultaformacaoacademica.xhtml");
 			} else if (id == 3) {

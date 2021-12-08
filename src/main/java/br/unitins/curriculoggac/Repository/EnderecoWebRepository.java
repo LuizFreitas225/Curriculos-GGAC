@@ -11,18 +11,18 @@ import br.unitins.curriculoggac.model.EnderecoWeb;
 
 public class EnderecoWebRepository extends Repository<EnderecoWeb> {
 	
-	//Busca Todos os endereçõs vínculados  a um determinado currículo
+	//Busca Todos os endereÃ§Ãµs vÃ­nculados  a um determinado currÃ­culo
 	@SuppressWarnings("unchecked")
 	public List<EnderecoWeb> findByDescricao(String descricao,  Curriculo curriculo) throws RepositoryException {
 		try { 
 			EntityManager em = getEntityManager();
 			//JPQL ou SQL
-			Query query = em.createQuery("SELECT e FROM Curriculo c, EnderecoWeb e "
-					+ "WHERE upper(e.descricao) LIKE upper(:descricao) "
-					+ " AND :curriculo.pessoa = e.pessoa  "
-					+ "ORDER BY c.descricao");
-			query.setParameter("descricao", "%" + descricao + "%");
-			query.setParameter("curriculo", curriculo);
+			Query query = em.createQuery("SELECT c FROM EnderecoWeb c " + 
+					"WHERE upper(c.descricao) like upper(:nome)" + 
+					"AND :pessoa = c.pessoa ORDER BY c.descricao" , EnderecoWeb.class);
+			query.setParameter("nome", "%" + descricao + "%");
+			query.setParameter("pessoa", curriculo.getPessoa());
+		
 			
 			
 			return query.getResultList();
@@ -30,7 +30,7 @@ public class EnderecoWebRepository extends Repository<EnderecoWeb> {
 			// mandando pro console o exception gerado
 			e.printStackTrace();
 			// repassando a excecao para quem vai executar o metodo
-			throw new RepositoryException("Problema ao pesquisar currículos.");
+			throw new RepositoryException("Problema ao pesquisar currï¿½culos.");
 		}
 	}
 }
