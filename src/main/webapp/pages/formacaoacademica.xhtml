@@ -60,6 +60,17 @@
 				</p:selectOneMenu>
 
 			</div>
+			
+			<div class="p-field" style="padding: 0px 0px 15px 0px;">
+				<label for="firstname">Tipo de Ensino</label>
+				<p:selectOneMenu
+					value="#{formacaoAcademicaController.entity.tipoEnsino}">
+					<f:selectItem itemLabel="Selecione ..." />
+					<f:selectItems value="#{formacaoAcademicaController.listEnsino}"
+						var="obj" itemLabel="#{obj.label}" />
+				</p:selectOneMenu>
+
+			</div>
 
 
 
@@ -68,7 +79,7 @@
 
 		<div class="card" style="padding: 0px 0px 15px 0px;">
 
-			<p:commandLink id="ajax" update="inputForm mensagemValidacao "
+			<p:commandLink id="ajax" process="@this"  update="mensagemValidacao "
 				value="Voltar" action="#{formacaoAcademicaController.voltar}"
 				style="padding: 15px 0px 15px 0px;">
 

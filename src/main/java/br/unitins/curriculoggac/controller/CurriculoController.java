@@ -107,7 +107,12 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 		listing.open();
 
 	}
-	
+	public boolean getTemId() {
+		if( getEntity().getId() != null) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public Curriculo getEntity() {

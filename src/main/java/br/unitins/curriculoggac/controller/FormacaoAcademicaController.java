@@ -13,6 +13,7 @@ import br.unitins.curriculoggac.application.Util;
 import br.unitins.curriculoggac.model.Curriculo;
 import br.unitins.curriculoggac.model.FormacaoAcademica;
 import br.unitins.curriculoggac.model.StatusFormacao;
+import br.unitins.curriculoggac.model.TipoEnsino;
 
 @Named
 @ViewScoped
@@ -54,6 +55,10 @@ public class FormacaoAcademicaController extends Controller<FormacaoAcademica> i
 	}
 	public StatusFormacao[] getListStatus(){
 		return StatusFormacao.values();
+	}
+	
+	public TipoEnsino[] getListEnsino(){
+		return TipoEnsino.values();
 	}
 
 	public Curriculo getCurriculo() {

@@ -29,19 +29,19 @@
 		<div class="ui-fluid">
 			<div class="p-field" style="padding: 0px 0px 10px 0px;">
 				<label for="firstname"> Primeiro Nome</label>
-				<p:inputText id="nome" 
-					type="text" value="#{curriculoController.entity.pessoa.nome}" />
+				<p:inputText id="nome" type="text"
+					value="#{curriculoController.entity.pessoa.nome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Sobrenome</label>
-				<p:inputText id="sobrenome" 
-					type="text" value="#{curriculoController.entity.pessoa.sobreNome}" />
+				<p:inputText id="sobrenome" type="text"
+					value="#{curriculoController.entity.pessoa.sobreNome}" />
 			</div>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Idade</label>
-				<p:inputText id="Idade"  type="text"
+				<p:inputText id="Idade" type="text"
 					value="#{curriculoController.entity.pessoa.idade}" />
 			</div>
 
@@ -58,15 +58,16 @@
 						actionListener="#{curriculoController.abrirCidadeListing}"
 						update="endereco mensagemValidacao " process="@this">
 						<p:ajax event="dialogReturn"
-							listener="#{curriculoController.obterCidadeListing}" process="@this"
-							update="endereco" />
+							listener="#{curriculoController.obterCidadeListing}"
+							process="@this" update="endereco" />
 					</p:commandButton>
 				</div>
 			</h:panelGroup>
 
 			<div class="p-field" style="padding: 0px 0px 15px 0px;">
 				<label for="firstname">Estado Civil</label>
-				<p:selectOneMenu value="#{curriculoController.entity.pessoa.estadoCivil}">
+				<p:selectOneMenu
+					value="#{curriculoController.entity.pessoa.estadoCivil}">
 					<f:selectItem itemLabel="Selecione ..." />
 					<f:selectItems value="#{curriculoController.listEstadoCivil}"
 						var="obj" itemLabel="#{obj.label}" />
@@ -79,28 +80,59 @@
 		</div>
 		<div class="card" style="padding: 0px 0px 15px 0px;"></div>
 
-		<div style="width: 3rem; text-align: center">
 
-			
-
+		<h:panelGrid columns="5" id="panelButtons">
 
 			<p:commandButton update="inputForm mensagemValidacao "
 				value="Cadastrar" icon="pi pi-check" title="Cadastrar"
 				action="#{curriculoController.salvarCurriculo}"
-				styleClass="ui-button-outlined ui-button-success">
+				styleClass="ui-button-outlined ui-button-success"
+				rendered="#{!curriculoController.temId}">
 				<p:confirm type="popup" header="Confirmation"
 					message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
 			</p:commandButton>
 
-			<p:confirmPopup global="true">
-				<p:commandButton value="Confirmar" type="button"
-					styleClass="ui-confirm-popup-yes" />
-				<p:commandButton value="Revisar" type="button"
-					styleClass="ui-confirm-popup-no ui-button-flat" />
 
-			</p:confirmPopup>
-		</div>
+			<p:commandButton value="Limpar"
+				actionListener="#{curriculoController.limpar}" process="@this"
+				update="@form panelButtons"
+				styleClass="ui-button-raised ui-button-flat ui-button-plain"
+				style="margin: 15px 0px 0px 0px;" />
 
+
+
+			<p:commandButton update="@form mensagemValidacao panelButtons "
+				value="Alterar" icon="pi pi-pencil" title="Alterar"
+				action="#{curriculoController.salvarCurriculo}"
+				styleClass="ui-button-raised ui-button-flat ui-button-plain"
+				style="margin: 15px 0px 0px 0px;"
+				rendered="#{curriculoController.temId}">
+				<p:confirm type="popup" header="Confirmation"
+					message="Lembre-se de revisar os dados." icon="pi pi-info-circle" />
+			</p:commandButton>
+
+			<p:commandButton value="Excluir"
+				actionListener="#{curriculoController.excluir}" process="@form"
+				update="@form mensagemValidacao panelButtons "
+				styleClass="ui-button-raised ui-button-danger ui-button-flat"
+				icon="pi pi-times" style="margin: 15px 0px 0px 0px;"
+				rendered="#{curriculoController.temId }">
+
+
+				<p:confirm type="popup" header="Confirmation"
+					message="Essa ação não poderá ser desfeita."
+					icon="pi pi-info-circle" />
+			</p:commandButton>
+
+
+		</h:panelGrid>
+		<p:confirmPopup global="true">
+			<p:commandButton value="Confirma" type="button"
+				styleClass="ui-confirm-popup-yes" />
+			<p:commandButton value="Revisar" type="button"
+				styleClass="ui-confirm-popup-no ui-button-flat" />
+
+		</p:confirmPopup>
 	</h:form>
 
 

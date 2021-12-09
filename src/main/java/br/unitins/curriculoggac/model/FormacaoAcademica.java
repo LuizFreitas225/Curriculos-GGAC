@@ -10,7 +10,17 @@ public class FormacaoAcademica extends Formacao {
 	
 	private String semestre;
 	
+	private TipoEnsino tipoEnsino ;
 	
+	
+
+	public TipoEnsino getTipoEnsino() {
+		return tipoEnsino;
+	}
+
+	public void setTipoEnsino(TipoEnsino tipoEnsino) {
+		this.tipoEnsino = tipoEnsino;
+	}
 
 	public String getSemestre() {
 		return semestre;
