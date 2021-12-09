@@ -40,7 +40,7 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 		super();
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		Curriculo curriculo = (Curriculo) flash.get("curriculoMenu"); 
-		if(curriculo != null)
+		if(curriculo.getId() != null)
 		setEntity(curriculo);
 	}
 

@@ -71,6 +71,8 @@ public class EsqueceuSenhaController extends Controller<RecuperarSenha> implemen
 					getEntity().getUsuario().setSenha(senha);
 					UsuarioRepository repo = new UsuarioRepository();
 					try {
+						String hash = Util.hash(getEntity().getUsuario().getEmail() + getSenha());
+						getEntity().getUsuario().setSenha(hash);
 						repo.save(getEntity().getUsuario());
 						Util.addInfoMessage("Senha alterada com sucesso.");
 						getEntity().setUtilizado(true);
