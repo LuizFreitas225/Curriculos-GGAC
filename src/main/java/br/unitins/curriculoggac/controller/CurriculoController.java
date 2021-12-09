@@ -124,6 +124,14 @@ public class CurriculoController extends Controller<Curriculo> implements Serial
 		return entity;
 	}
 	
+	public Pessoa getPessoa() {
+		
+		return getEntity().getPessoa();
+	}
+	
+	
+	
+	
 	public EstadoCivil[] getListEstadoCivil(){
 		return EstadoCivil.values();
 	}

@@ -52,6 +52,9 @@ public enum Perfil {
 		
 		
 		
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/cidadelisting.xhtml");
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/paislisting.xhtml");
+		paginasComPermissao.add("/CurriculoGGP/faces/pages/estadolisting.xhtml");
 		
 		if (id.equals(1)) { // ADM
 			
@@ -61,13 +64,13 @@ public enum Perfil {
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/usuariolisting.xhtml");
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/estado.xhtml");
-			paginasComPermissao.add("/CurriculoGGP/faces/pages/estadolisting.xhtml");
+			
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/pais.xhtml");
-			paginasComPermissao.add("/CurriculoGGP/faces/pages/paislisting.xhtml");
+			
 			
 			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidade.xhtml");
-			paginasComPermissao.add("/CurriculoGGP/faces/pages/cidadelisting.xhtml");
+			
 			
 		
 		} else if (id.equals(2)) { // Usuario
