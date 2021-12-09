@@ -44,8 +44,10 @@
 			 <a style="text-decoration: none;color:#495057" href="visualizacaocurriculo.xhtml">
 					Atributos</a> |  <a style="text-decoration: none;color:#695057"
 					href="paginaconsultacurriculo.xhtml"> Olhar outro </a>
-                | <a style="text-decoration: none;color:#495057" href="..">
-					Download</a> | <a style="text-decoration: none;color:#495057" href="..">
+                | <p:commandLink style="text-decoration: none;color:#495057" value="Download"
+                   actionListener="#{consultaEnderecoWebController.baixar}"/>
+					
+					| <a style="text-decoration: none;color:#495057" href="..">
 					Imprimir</a> |
 
 				<div align="center">

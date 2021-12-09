@@ -90,6 +90,13 @@
 					listener="#{gerencimentoUsuarioController.obterUsuarioListing}"
 					update="inputForm" />
 			</p:commandLink>
+			<BR />
+			<BR />
+			<p:commandLink 
+				value="Relatório"
+				actionListener="#{gerencimentoUsuarioController.baixar}" process="@this">
+			
+			</p:commandLink>
 
 
 			<h:panelGrid columns="5" id="panelButtons">

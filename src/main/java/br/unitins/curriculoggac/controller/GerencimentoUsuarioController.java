@@ -61,6 +61,11 @@ public class GerencimentoUsuarioController extends Controller<Usuario> implement
 		setConfirmarSenha("");
 
 	}
+	public void baixar() {
+
+		
+		Util.redirect("/CurriculoGGP/faces/usuarioreportservlet");
+	}
 
 	public String alterarUsuario() {
 

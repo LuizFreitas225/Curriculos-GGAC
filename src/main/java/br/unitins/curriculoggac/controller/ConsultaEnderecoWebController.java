@@ -45,7 +45,8 @@ public class ConsultaEnderecoWebController implements Serializable {
 		flash.put("curriculoAtual", curriculo);
 		Util.redirect("enderecoweb.xhtml");
 	}
-
+	
+	
 	public void pesquisar() {
 		EnderecoWebRepository repo = new EnderecoWebRepository();
 		try {
